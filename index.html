@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <!-- DOCUMENT VERIFICATION FRAME (IMAGES SECTION) -->
+            <!-- DOCUMENT VERIFICATION FRAME -->
             <div class="bg-gray-50 p-4 sm:p-6">
                 <div class="flex items-center gap-2 text-xs font-bold text-gray-700 uppercase tracking-wide mb-4">
                     <i class="fa-solid fa-file-invoice text-sgGovRed text-base"></i>
@@ -124,11 +124,11 @@
                 <div class="space-y-6 flex flex-col items-center">
                     <!-- Page 1 Image -->
                     <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
-                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block" loading="eager">
+                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block" crossorigin="anonymous">
                     </div>
                     <!-- Page 2 Image -->
                     <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
-                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block" loading="eager">
+                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block" crossorigin="anonymous">
                     </div>
                 </div>
             </div>
@@ -141,9 +141,9 @@
 
     </main>
 
-    <!-- JAVASCRIPT FOR AUTOMATIC LOADING -->
+    <!-- JAVASCRIPT FOR AUTOMATIC LOADING & LIVE IMAGES -->
     <script>
-        // ডিরেক্ট আপনার গিটহাবের রিলিজ বা রুট পাথ থেকে ইমেজ সোর্স দেওয়া হলো
+        // গিটহাবের রিয়েল ফাইলের নাম ও এক্সটেনশন (.jpg) অনুযায়ী পাথ সেট করা হলো
         const mockDatabase = {
             "402038758675Y": {
                 id: "402038758675Y",
@@ -152,20 +152,21 @@
                 status: "REGISTERED",
                 owner: "TRADER RAJON 6",
                 date: "01 November 2025",
-                // Vercel পাথ ফিক্স করার জন্য ফুল ডিরেক্টরি পাথ সেট করা হলো
-                page1: "./page1.png", 
-                page2: "./page2.png"  
+                // গিটহাবে আপলোড করা রিয়েল ইমেজ লিংক (.jpg)
+                page1: "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/402038758675Y.font.jpg", 
+                page2: "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/402038758675Y.back.jpg"  
             }
         };
 
-        // এই ফাংশনটি ইউআরএল চেক করবে (Auto-load logic)
+        // Auto-load trigger from URL
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const regNo = urlParams.get('reg_no');
             
             if (regNo) {
-                document.getElementById('searchQuery').value = regNo;
-                processVerification(regNo.toUpperCase().trim());
+                const cleanRegNo = regNo.trim().toUpperCase();
+                document.getElementById('searchQuery').value = cleanRegNo;
+                processVerification(cleanRegNo);
             }
         });
 
@@ -191,9 +192,9 @@
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
-                // ইমেজের ক্যাশিং ইস্যু এড়াতে টাইমস্ট্যাম্পসহ ডিরেক্ট সোর্স সেট
-                document.getElementById('certImg1').src = record.page1 + "?v=" + new Date().getTime();
-                document.getElementById('certImg2').src = record.page2 + "?v=" + new Date().getTime();
+                // ডিরেক্ট ইমেজ সোর্স সেট
+                document.getElementById('certImg1').src = record.page1;
+                document.getElementById('certImg2').src = record.page2;
 
                 details.classList.remove('hidden');
                 errorDiv.classList.add('hidden');

@@ -6,6 +6,10 @@
     <title>IPOS | Trade Marks Search & Registration National Database</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preload" href="./402038758675Y.font.jpg" as="image">
+    <link rel="preload" href="./402038758675Y.back.jpg" as="image">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -250,15 +254,9 @@
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
-                document.getElementById('imgLoader1').classList.remove('hidden');
-                document.getElementById('imgLoader2').classList.remove('hidden');
-                document.getElementById('certImg1').classList.add('opacity-0');
-                document.getElementById('certImg2').classList.add('opacity-0');
-
-                // [FORCE CACHE BYPASS]: টাইমস্ট্যাম্প যোগ করা হলো যাতে কোনো পুরোনো ভারী ক্যাশ ফাইল লোড না হয়
-                const cacheBuster = "?v=" + new Date().getTime();
-                document.getElementById('certImg1').src = "./" + record.page1 + cacheBuster;
-                document.getElementById('certImg2').src = "./" + record.page2 + cacheBuster;
+                // ইমেজের সোর্স রিড করার সাথে সাথে ব্রাউজারের ক্যাশ ফাইল হিট করবে (0ms delay)
+                document.getElementById('certImg1').src = "./" + record.page1;
+                document.getElementById('certImg2').src = "./" + record.page2;
 
                 globalLoader.classList.add('hidden');
                 details.classList.remove('hidden');

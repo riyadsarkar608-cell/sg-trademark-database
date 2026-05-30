@@ -25,7 +25,7 @@
     </script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        .fade-in { animation: fadeIn 0.2s ease-in-out forwards; }
+        .fade-in { animation: fadeIn 0.15s ease-in-out forwards; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -33,7 +33,6 @@
 
     <!-- 1. OFFICIAL SINGAPORE GOVERNMENT MASTHEAD WITH LION LOGO -->
     <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600 select-none">
-        <!-- রিয়েল সোর্স: আপনার গিটহাবে রাখা logu.png সরাসরি এখানে সেট করা হয়েছে -->
         <img src="./logu.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
@@ -125,18 +124,18 @@
                 
                 <div class="space-y-4 sm:space-y-6 flex flex-col items-center">
                     <!-- Page 1 Image Container -->
-                    <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
+                    <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[150px] flex items-center justify-center">
                         <div id="imgLoader1" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader1').classList.add('hidden'); this.classList.remove('opacity-0');">
+                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0" onload="document.getElementById('imgLoader1').classList.add('hidden'); this.classList.remove('opacity-0');">
                     </div>
                     <!-- Page 2 Image Container -->
-                    <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
+                    <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[150px] flex items-center justify-center">
                         <div id="imgLoader2" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader2').classList.add('hidden'); this.classList.remove('opacity-0');">
+                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0" onload="document.getElementById('imgLoader2').classList.add('hidden'); this.classList.remove('opacity-0');">
                     </div>
                 </div>
             </div>
@@ -198,7 +197,7 @@
                     </div>
                     <div class="text-left md:text-right">
                         <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-2">Built by</span>
-                        <img src="https://www.open.gov.sg/images/ogp-logo-white.svg" alt="Open Government Products Logo" class="h-5 w-auto object-contain opacity-90 block md:ml-auto" onerror="this.src='https://www.ogp.gov.sg/assets/img/ogp-logo.svg'">
+                        <img src="https://www.open.gov.sg/images/ogp-logo-white.svg" alt="Open Government Products Logo" class="h-5 w-auto object-contain opacity-90 block md:ml-auto">
                     </div>
                 </div>
             </div>
@@ -215,10 +214,11 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR FAST ROUTING & RENDER FIXES -->
+    <!-- JAVASCRIPT FOR LIGHTWEIGHT FAST LOADING -->
     <script>
         let registryData = null;
 
+        // পেজ লোড হওয়ামাত্র ডেটা ডিরেক্ট ফেচ
         async function loadRegistryData() {
             try {
                 const response = await fetch('./data.json');
@@ -265,19 +265,15 @@
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
-                // লোডার রিসেট
+                // লোডার স্টেট ক্লিন রিসেট
                 document.getElementById('imgLoader1').classList.remove('hidden');
                 document.getElementById('imgLoader2').classList.remove('hidden');
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // আপনার গিটহাবের রিয়েল ফাইল নামের প্যাথ ডিরেক্টরি বাইন্ডিং করা হলো
-                const img1Path = "./" + record.page1;
-                const img2Path = "./" + record.page2;
-
-                // ইনলাইন লোড বুস্টার স্পিড লজিক
-                document.getElementById('certImg1').src = img1Path;
-                document.getElementById('certImg2').src = img2Path;
+                // লাইটওয়েট ডিরেক্ট সোর্স রেন্ডারিং লজিক (Lazy-load bypass)
+                document.getElementById('certImg1').src = "./" + record.page1;
+                document.getElementById('certImg2').src = "./" + record.page2;
 
                 globalLoader.classList.add('hidden');
                 details.classList.remove('hidden');

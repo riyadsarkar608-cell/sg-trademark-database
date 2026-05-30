@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPOS | Trade Marks Search & Registration National Database</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -16,7 +14,8 @@
                         sgGovBlue: '#002A54',
                         sgGovRed: '#A31D1D',
                         sgGovGray: '#F2F5F8',
-                        sgTextDark: '#222222'
+                        sgTextDark: '#222222',
+                        sgFooterBg: '#1A1A1A'
                     }
                 }
             }
@@ -28,11 +27,10 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body class="bg-[#F9FAFC] text-sgTextDark antialiased">
+<body class="bg-[#F9FAFC] text-sgTextDark antialiased min-h-screen flex flex-col">
 
-    <!-- 1. OFFICIAL SINGAPORE GOVERNMENT MASTHEAD -->
     <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg" alt="Singapore Crest" class="h-3 opacity-80">
+        <img src="./ChatGPT Image May 30, 2026, 11_49_35 PM.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
             <span class="text-gray-400 mx-1">|</span>
@@ -40,7 +38,6 @@
         </div>
     </div>
 
-    <!-- 2. IPOS OFFICIAL BRAND HEADER -->
     <header class="bg-white border-b-2 border-[#002A54] shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
             <div class="flex items-center gap-4">
@@ -62,27 +59,23 @@
         </div>
     </header>
 
-    <!-- 3. MAIN PORTAL CONTENT -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
         
-        <!-- Search Box -->
         <div class="bg-white border border-gray-300 shadow-sm max-w-3xl mx-auto mb-6 sm:mb-8">
             <div class="bg-sgGovBlue text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider">
                 <i class="fa-solid fa-search mr-1.5 text-red-300"></i> ENTER TRADEMARK APPLICATION NUMBER
             </div>
-            <div class="p-4 sm:p-6 bg-sgGovGray flex gap-2 sm:get-3 text-xs">
+            <div class="p-4 sm:p-6 bg-sgGovGray flex gap-2 sm:gap-3 text-xs">
                 <input type="text" id="searchQuery" placeholder="e.g., 402038758675Y" class="w-full border border-gray-400 p-2.5 sm:p-3 text-sm font-mono focus:border-sgGovBlue focus:outline-none bg-white uppercase">
                 <button onclick="performSearch()" class="bg-sgGovBlue hover:bg-slate-800 text-white font-bold px-6 sm:px-8 uppercase tracking-wider text-xs transition">Verify</button>
             </div>
         </div>
 
-        <!-- Global Loader Skeleton -->
         <div id="globalLoader" class="hidden text-center py-12 max-w-3xl mx-auto bg-white border border-gray-300 shadow-sm mb-8">
             <i class="fa-solid fa-circle-notch fa-spin text-3xl text-sgGovBlue mb-2"></i>
             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Connecting to National Registry Server...</p>
         </div>
 
-        <!-- Official Registry Details Card -->
         <div id="detailsContainer" class="hidden max-w-3xl mx-auto bg-white border border-gray-300 shadow-sm mb-8 fade-in">
             <div class="bg-gray-100 border-b border-gray-300 px-4 py-3 text-xs font-bold text-sgGovBlue uppercase tracking-wide">
                 Official Registry Details
@@ -114,7 +107,6 @@
                 </div>
             </div>
 
-            <!-- DOCUMENT VERIFICATION FRAME -->
             <div class="bg-gray-50 p-3 sm:p-6">
                 <div class="flex items-center gap-2 text-xs font-bold text-gray-700 uppercase tracking-wide mb-4">
                     <i class="fa-solid fa-file-invoice text-sgGovRed text-base"></i>
@@ -122,14 +114,12 @@
                 </div>
                 
                 <div class="space-y-4 sm:space-y-6 flex flex-col items-center">
-                    <!-- Page 1 Image Container -->
                     <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
                         <div id="imgLoader1" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
                         <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="imageLoaded(1)">
                     </div>
-                    <!-- Page 2 Image Container -->
                     <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
                         <div id="imgLoader2" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
@@ -140,14 +130,75 @@
             </div>
         </div>
 
-        <!-- No Records Found Alert -->
         <div id="errorContainer" class="hidden max-w-3xl mx-auto bg-red-50 border border-red-300 p-4 text-center text-sm font-semibold text-red-800">
             <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> No official records matched this application number in the Singapore Registry.
         </div>
 
     </main>
 
-    <!-- JAVASCRIPT FOR MOBILE BOOST LOADING -->
+    <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800">
+                <div>
+                    <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">About IPOS</h4>
+                    <ul class="space-y-2 text-gray-400 text-xs">
+                        <li><a href="#" class="hover:text-white">About IPOS</a></li>
+                        <li><a href="#" class="hover:text-white">Global IP Hub</a></li>
+                        <li><a href="#" class="hover:text-white">Resources</a></li>
+                        <li><a href="#" class="hover:text-white">News</a></li>
+                        <li><a href="#" class="hover:text-white">Events</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">FAQs <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">About IP</h4>
+                    <ul class="space-y-2 text-gray-400 text-xs">
+                        <li><a href="#" class="hover:text-white">Trade Marks</a></li>
+                        <li><a href="#" class="hover:text-white">Patents</a></li>
+                        <li><a href="#" class="hover:text-white">Copyright</a></li>
+                        <li><a href="#" class="hover:text-white">Resolve IP</a></li>
+                        <li><a href="#" class="hover:text-white">eServices</a></li>
+                        <li><a href="#" class="hover:text-white">Data Protection Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Reach Us</h4>
+                    <div class="flex gap-4 text-lg text-gray-400 mb-4">
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                    <a href="#" class="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider block">Contact</a>
+                </div>
+                <div class="flex flex-col justify-end md:items-end gap-4">
+                    <div class="text-left md:text-right">
+                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1">Made with</span>
+                        <span class="text-sm font-bold text-gray-300 inline-flex items-center gap-1"><i class="fa-solid fa-cube text-xs"></i> isomer</span>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1">Built by</span>
+                        <span class="text-xs font-extrabold text-gray-300 tracking-wide uppercase">Open Government Products</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-gray-500 gap-4">
+                <p>&copy; 2026 Government of Singapore. Last updated 26 May 2026</p>
+                <div class="flex flex-wrap gap-4 justify-center sm:justify-end">
+                    <a href="#" class="hover:text-gray-300">Report Vulnerability <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></a>
+                    <a href="#" class="hover:text-gray-300">Privacy Statement <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></a>
+                    <a href="#" class="hover:text-gray-300">Terms of Use</a>
+                    <a href="#" class="hover:text-gray-300">REACH <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         let registryData = null;
 
@@ -202,7 +253,6 @@
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // [MOBILE OPTIMIZATION]: ইমেজ ২টি অ্যাসিনক্রোনাসলি ব্রাউজার মেমরিতে প্রি-লোড করানোর ট্রিক
                 const img1Path = "./" + record.page1;
                 const img2Path = "./" + record.page2;
 
@@ -218,7 +268,7 @@
                     document.getElementById('certImg2').src = img2Path;
                 };
 
-                globalLoader.add ? globalLoader.classList.add('hidden') : globalLoader.classList.add('hidden');
+                globalLoader.classList.add('hidden');
                 details.classList.remove('hidden');
             } else {
                 globalLoader.classList.add('hidden');

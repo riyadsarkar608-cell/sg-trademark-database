@@ -30,7 +30,7 @@
 
     <!-- 1. OFFICIAL SINGAPORE GOVERNMENT MASTHEAD -->
     <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg" alt="Singapore Crest" class="h-3 opacity-80">
+        <img src="https://www.gov.sg/images/sg-crest.png" alt="Singapore Crest" class="h-3.5 opacity-80" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'; this.style.height='12px';">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
             <span class="text-gray-400 mx-1">|</span>
@@ -39,30 +39,32 @@
     </div>
 
     <!-- 2. IPOS OFFICIAL BRAND HEADER -->
-    <header class="bg-white border-b-2 border-[#002A54] shadow-sm">
+    <header class="bg-white border-b-2 border-sgGovBlue shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <!-- IPOS Real Logo Layout -->
+                <!-- IPOS Traditional Logo Layout -->
                 <div class="flex items-center gap-3 border-r border-gray-300 pr-5">
-                    <div class="flex items-center font-sans tracking-tighter text-4xl font-black select-none">
-                        <span class="text-[#EF4A24]">IP</span><span class="text-[#4A5568]">OS</span>
+                    <div class="bg-sgGovBlue text-white p-2.5 rounded-none font-serif font-bold text-xl tracking-tighter flex flex-col justify-center items-center leading-none w-12 h-12">
+                        <span>I</span><span>P</span>
                     </div>
-                    <div class="leading-none">
-                        <span class="text-[9px] uppercase tracking-[0.12em] text-[#4A5568] font-extrabold block">Intellectual Property</span>
-                        <span class="text-[9px] uppercase tracking-[0.12em] text-[#4A5568] font-extrabold block mt-0.5">Office of Singapore</span>
+                    <div class="leading-tight">
+                        <span class="text-lg font-black tracking-tight text-sgGovBlue block">IPOS</span>
+                        <span class="text-[9px] uppercase tracking-widest text-gray-500 font-bold block">Intellectual Property</span>
+                        <span class="text-[9px] uppercase tracking-widest text-gray-500 font-bold block">Office of Singapore</span>
                     </div>
                 </div>
                 <!-- Portal Title -->
                 <div>
                     <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 uppercase tracking-wider rounded border border-amber-200 block w-max mb-0.5">IPOS Digital Hub</span>
-                    <h1 class="text-md font-bold text-[#002A54] uppercase tracking-wide">Trade Marks National Register</h1>
+                    <h1 class="text-md font-bold text-sgGovBlue uppercase tracking-wide">Trade Marks National Register</h1>
                 </div>
             </div>
             
+            <!-- Gov Tools -->
             <div class="flex items-center gap-3 text-xs">
                 <span class="text-gray-500 hidden md:inline"><i class="fa-solid fa-circle text-green-500 text-[9px] mr-1"></i> System Status: Operational</span>
-                <button class="bg-[#D1E3F8] hover:bg-[#C0D8F3] text-[#002A54] font-bold px-3 py-2 border border-[#A3C7EE] transition flex items-center gap-1.5">
-                    Login
+                <button class="bg-[#D1E3F8] hover:bg-[#C0D8F3] text-sgGovBlue font-bold px-3 py-2 border border-[#A3C7EE] transition flex items-center gap-1.5">
+                    <img src="https://www.singpass.gov.sg/assets/images/logos/singpass-logo.svg" alt="Singpass" class="h-3" onerror="this.replaceWith('Singpass')"> Login
                 </button>
             </div>
         </div>
@@ -71,137 +73,304 @@
     <!-- 3. MAIN PORTAL CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <!-- Search Box -->
-        <div class="bg-white border border-gray-300 shadow-sm max-w-3xl mx-auto mb-8">
-            <div class="bg-sgGovBlue text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider">
-                <i class="fa-solid fa-search mr-1.5 text-red-300"></i> ENTER TRADEMARK APPLICATION NUMBER
-            </div>
-            <div class="p-6 bg-sgGovGray flex gap-3 text-xs">
-                <input type="text" id="searchQuery" placeholder="e.g., 402038758675Y" class="w-full border border-gray-400 p-3 text-sm font-mono focus:border-sgGovBlue focus:outline-none bg-white uppercase">
-                <button onclick="performSearch()" class="bg-sgGovBlue hover:bg-slate-800 text-white font-bold px-8 uppercase tracking-wider text-xs transition">Verify</button>
+        <!-- ALERT INSTRUCTION -->
+        <div class="bg-blue-50 border-l-4 border-sgGovBlue p-4 mb-6 text-xs text-slate-700 flex gap-3">
+            <i class="fa-solid fa-circle-info text-sgGovBlue text-base mt-0.5"></i>
+            <div>
+                <p class="font-bold mb-0.5">Public Inspection Notice</p>
+                <p>This public search facility shows registered trade marks under the Singapore Trade Marks Act 1998. Use the options below to verify assets or upload your internal certificates for digital lodgement.</p>
             </div>
         </div>
 
-        <!-- Official Registry Details Card (Initially Hidden) -->
-        <div id="detailsContainer" class="hidden max-w-3xl mx-auto bg-white border border-gray-300 shadow-sm mb-8">
-            <div class="bg-gray-100 border-b border-gray-300 px-4 py-3 text-xs font-bold text-sgGovBlue uppercase tracking-wide">
-                Official Registry Details
-            </div>
-            <div class="p-6 space-y-4 text-sm border-b border-gray-200">
-                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
-                    <span class="text-gray-500 font-medium">Trademark Number</span>
-                    <span id="resNum" class="font-mono font-bold text-gray-900"></span>
-                </div>
-                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
-                    <span class="text-gray-500 font-medium">Owner / Brand Name</span>
-                    <span id="resName" class="font-bold text-gray-900 uppercase"></span>
-                </div>
-                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
-                    <span class="text-gray-500 font-medium">Filing / Application Date</span>
-                    <span id="resDate" class="text-gray-800"></span>
-                </div>
-                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
-                    <span class="text-gray-500 font-medium">Classification</span>
-                    <span id="resClass" class="font-semibold text-gray-800"></span>
-                </div>
-                <div class="grid grid-cols-2 py-2 border-b border-gray-100 items-center">
-                    <span class="text-gray-500 font-medium">Status</span>
-                    <div><span id="resStatus" class="px-2 py-0.5 bg-green-100 text-green-800 border border-green-300 font-bold text-xs uppercase tracking-wide"></span></div>
-                </div>
-                <div class="grid grid-cols-2 py-2">
-                    <span class="text-gray-500 font-medium">Authority Office</span>
-                    <span class="text-gray-800 font-medium">Intellectual Property Office of Singapore (IPOS)</span>
-                </div>
-            </div>
-
-            <!-- DOCUMENT VERIFICATION FRAME -->
-            <div class="bg-gray-50 p-4 sm:p-6">
-                <div class="flex items-center gap-2 text-xs font-bold text-gray-700 uppercase tracking-wide mb-4">
-                    <i class="fa-solid fa-file-invoice text-sgGovRed text-base"></i>
-                    <span>Document Verification Frame (Page 1 & 2)</span>
-                </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- LEFT 2 COLUMNS: SEARCH & DATABASE REGISTER -->
+            <div class="lg:col-span-2 space-y-6">
                 
-                <div class="space-y-6 flex flex-col items-center">
-                    <!-- Page 1 Image -->
-                    <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
-                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block" crossorigin="anonymous">
+                <!-- Search Box -->
+                <div class="bg-white border border-gray-300 shadow-sm">
+                    <div class="bg-sgGovBlue text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-search mr-1.5 text-red-300"></i> Search Criteria / Register Inquiry
                     </div>
-                    <!-- Page 2 Image -->
-                    <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
-                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block" crossorigin="anonymous">
+                    <div class="p-4 bg-sgGovGray border-b border-gray-200 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Search Mode</label>
+                            <select id="searchType" class="w-full border border-gray-400 p-2 bg-white focus:border-sgGovBlue focus:outline-none">
+                                <option value="word">Trade Mark Text</option>
+                                <option value="number">Application Number</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block font-bold text-gray-700 mb-1">Inquiry Term</label>
+                            <div class="flex">
+                                <input type="text" id="searchQuery" placeholder="Enter keyword or App No..." class="w-full border border-gray-400 p-2 focus:border-sgGovBlue focus:outline-none bg-white">
+                                <button onclick="performSearch()" class="bg-sgGovRed hover:bg-red-800 text-white font-bold px-6 uppercase tracking-wider text-xs transition">Search</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Results Table Register -->
+                <div class="bg-white border border-gray-300 shadow-sm">
+                    <div class="bg-gray-200 border-b border-gray-300 px-4 py-2 flex justify-between items-center text-xs">
+                        <span class="font-bold text-sgGovBlue uppercase tracking-wide"><i class="fa-solid fa-table-list mr-1"></i> Registry Records</span>
+                        <span class="bg-white px-2 py-0.5 font-mono text-gray-600 border border-gray-300 rounded" id="liveCount">Total Records: 3</span>
+                    </div>
+                    
+                    <div class="overflow-x-auto text-xs">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-gray-300 font-bold text-gray-700">
+                                    <th class="p-3 border-r border-gray-200">Application No.</th>
+                                    <th class="p-3 border-r border-gray-200">Mark Information</th>
+                                    <th class="p-3 border-r border-gray-200">Class</th>
+                                    <th class="p-3 border-r border-gray-200">Status</th>
+                                    <th class="p-3">Official Document</th>
+                                </tr>
+                            </thead>
+                            <tbody id="registryBody" class="divide-y divide-gray-200 font-medium text-slate-700">
+                                <!-- Default Mock Data -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold text-sgGovBlue border-r border-gray-200">T26148994A</td>
+                                    <td class="p-3 border-r border-gray-200"><span class="font-bold text-gray-900 block">SINGAPORE AIRLINES</span><span class="text-[10px] text-gray-400 block">Owner: SIA Ltd</span></td>
+                                    <td class="p-3 text-center border-r border-gray-200">Class 39</td>
+                                    <td class="p-3 border-r border-gray-200"><span class="px-2 py-0.5 bg-green-100 text-green-800 border border-green-300 font-bold text-[10px] uppercase">Registered</span></td>
+                                    <td class="p-3 text-center"><span class="text-gray-400 italic text-[11px]"><i class="fa-solid fa-lock text-[10px]"></i> Standard Record</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-mono font-bold text-sgGovBlue border-r border-gray-200">T2698765B</td>
+                                    <td class="p-3 border-r border-gray-200"><span class="font-bold text-gray-900 block">RAZER OMNI</span><span class="text-[10px] text-gray-400 block">Owner: Razer Asia</span></td>
+                                    <td class="p-3 text-center border-r border-gray-200">Class 09</td>
+                                    <td class="p-3 border-r border-gray-200"><span class="px-2 py-0.5 bg-amber-100 text-amber-800 border border-amber-300 font-bold text-[10px] uppercase">Pending</span></td>
+                                    <td class="p-3 text-center"><span class="text-gray-400 italic text-[11px]"><i class="fa-solid fa-lock text-[10px]"></i> Standard Record</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
-        </div>
 
-        <!-- No Records Found Alert -->
-        <div id="errorContainer" class="hidden max-w-3xl mx-auto bg-red-50 border border-red-300 p-4 text-center text-sm font-semibold text-red-800">
-            <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> No official records matched this application number in the Singapore Registry.
-        </div>
+            <!-- RIGHT 1 COLUMN: YOUR UPLOAD CONTROL PANEL -->
+            <div class="space-y-6">
+                
+                <!-- CERTIFICATE UPLOAD FORM -->
+                <div class="bg-white border border-gray-300 shadow-sm">
+                    <div class="bg-sgGovRed text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-file-arrow-up mr-1.5 text-amber-300"></i> Add Your Trademark & Certificate
+                    </div>
+                    <div class="p-4 space-y-4 text-xs">
+                        
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Trademark Name *</label>
+                            <input type="text" id="tmName" placeholder="e.g., MY BRAND LOGO" class="w-full border border-gray-400 p-2 focus:border-sgGovBlue focus:outline-none bg-white font-bold uppercase">
+                        </div>
 
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block font-bold text-gray-700 mb-1">Application No. *</label>
+                                <input type="text" id="tmAppNo" placeholder="e.g., T20261234" class="w-full border border-gray-400 p-2 focus:border-sgGovBlue focus:outline-none bg-white font-mono uppercase">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-gray-700 mb-1">Nice Class *</label>
+                                <input type="text" id="tmClass" placeholder="e.g., Class 35" class="w-full border border-gray-400 p-2 focus:border-sgGovBlue focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block font-bold text-gray-700 mb-1">Current Status</label>
+                                <select id="tmStatus" class="w-full border border-gray-400 p-2 bg-white focus:outline-none focus:border-sgGovBlue">
+                                    <option value="Registered">Registered</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Under Examination">Under Examination</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-bold text-gray-700 mb-1">Owner Name</label>
+                                <input type="text" id="tmOwner" placeholder="Applicant Name" class="w-full border border-gray-400 p-2 focus:border-sgGovBlue focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Certificate File Input -->
+                        <div class="border-2 border-dashed border-gray-300 p-4 bg-gray-50 text-center relative cursor-pointer hover:bg-gray-100 transition">
+                            <input type="file" id="tmFile" accept="image/*, application/pdf" class="absolute inset-0 opacity-0 cursor-pointer" onchange="updateFileName(this)">
+                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-gray-400 block mb-1"></i>
+                            <span id="uploadLabel" class="font-bold text-gray-600 block text-[11px]">Choose Certificate (PDF / Image)</span>
+                            <span class="text-[10px] text-gray-400 block mt-0.5">Max size: 10MB</span>
+                        </div>
+
+                        <button onclick="addTrademarkToRegistry()" class="w-full bg-sgGovBlue hover:bg-slate-800 text-white font-bold py-2.5 uppercase tracking-wide border border-transparent shadow text-xs transition">
+                            <i class="fa-solid fa-plus-circle mr-1 text-green-300"></i> Insert Into Database
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </main>
 
-    <!-- JAVASCRIPT FOR AUTOMATIC LOADING & LIVE IMAGES -->
+    <!-- 4. OFFICIAL GOVERNMENT FOOTER -->
+    <footer class="bg-sgGovBlue text-white mt-32 border-t-4 border-sgGovRed text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-6 border-b border-slate-700 pb-6">
+                <div>
+                    <span class="font-bold tracking-wide block mb-1">Intellectual Property Office of Singapore (IPOS)</span>
+                    <p class="text-slate-400 leading-relaxed text-[11px]">
+                        Intellectual Property Office of Singapore Registry Division<br>
+                        Address Verification Portal for National Registered Assets.
+                    </p>
+                </div>
+                <div class="flex gap-6 text-slate-400 text-[11px]">
+                    <a href="#" class="hover:underline">Rate this website</a>
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Use</a>
+                </div>
+            </div>
+            <div class="pt-4 text-slate-500 text-[10px] flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>&copy; 2026 Government of Singapore. Last updated: May 2026.</p>
+                <p class="font-mono text-[9px]">IPOS-SECURE-PORTAL-V4</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR DYNAMIC FUNCTIONALITY -->
     <script>
-        // গিটহাবের রিয়েল ফাইলের নাম ও এক্সটেনশন (.jpg) অনুযায়ী পাথ সেট করা হলো
-        const mockDatabase = {
-            "402038758675Y": {
-                id: "402038758675Y",
-                mark: "TRADER RAJON 6",
-                class: "Class 41",
-                status: "REGISTERED",
-                owner: "TRADER RAJON 6",
-                date: "01 November 2025",
-                // গিটহাবে আপলোড করা রিয়েল ইমেজ লিংক (.jpg)
-                page1: "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/402038758675Y.font.jpg", 
-                page2: "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/402038758675Y.back.jpg"  
-            }
-        };
+        // Store uploaded data array in memory
+        let localRegistry = [];
+        let uploadedFileUrl = "";
 
-        // Auto-load trigger from URL
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const regNo = urlParams.get('reg_no');
-            
-            if (regNo) {
-                const cleanRegNo = regNo.trim().toUpperCase();
-                document.getElementById('searchQuery').value = cleanRegNo;
-                processVerification(cleanRegNo);
+        // Track selected file name and convert file to base64 URL to view later
+        function updateFileName(input) {
+            const file = input.files[0];
+            if (file) {
+                document.getElementById('uploadLabel').innerText = `Selected: ${file.name}`;
+                document.getElementById('uploadLabel').classList.add('text-green-600');
+                
+                // Read file to preview as link
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedFileUrl = e.target.result;
+                };
+                reader.readAsDataURL(file);
             }
-        });
-
-        function performSearch() {
-            const query = document.getElementById('searchQuery').value.trim().toUpperCase();
-            if (!query) {
-                alert("Please enter an application number.");
-                return;
-            }
-            processVerification(query);
         }
 
-        function processVerification(appNumber) {
-            const details = document.getElementById('detailsContainer');
-            const errorDiv = document.getElementById('errorContainer');
+        // Add user input into the table
+        function addTrademarkToRegistry() {
+            const name = document.getElementById('tmName').value.trim().toUpperCase();
+            const appNo = document.getElementById('tmAppNo').value.trim().toUpperCase();
+            const tmClass = document.getElementById('tmClass').value.trim();
+            const status = document.getElementById('tmStatus').value;
+            const owner = document.getElementById('tmOwner').value.trim() || "Private Holder";
 
-            if (mockDatabase[appNumber]) {
-                const record = mockDatabase[appNumber];
-                
-                document.getElementById('resNum').innerText = record.id;
-                document.getElementById('resName').innerText = record.mark;
-                document.getElementById('resDate').innerText = record.date;
-                document.getElementById('resClass').innerText = record.class;
-                document.getElementById('resStatus').innerText = record.status;
-                
-                // ডিরেক্ট ইমেজ সোর্স সেট
-                document.getElementById('certImg1').src = record.page1;
-                document.getElementById('certImg2').src = record.page2;
-
-                details.classList.remove('hidden');
-                errorDiv.classList.add('hidden');
-            } else {
-                details.classList.add('hidden');
-                errorDiv.classList.remove('hidden');
+            if (!name || !appNo || !tmClass) {
+                alert("Please fill in Trademark Name, Application No., and Class.");
+                return;
             }
+
+            // Create object
+            const newRecord = {
+                id: appNo,
+                mark: name,
+                class: tmClass.includes('Class') ? tmClass : 'Class ' + tmClass,
+                status: status,
+                owner: owner,
+                file: uploadedFileUrl || "#"
+            };
+
+            // Push to top of list
+            localRegistry.unshift(newRecord);
+            
+            // Refresh database view
+            renderRegistry();
+
+            // Clear inputs
+            document.getElementById('tmName').value = '';
+            document.getElementById('tmAppNo').value = '';
+            document.getElementById('tmClass').value = '';
+            document.getElementById('tmOwner').value = '';
+            document.getElementById('uploadLabel').innerText = "Choose Certificate (PDF / Image)";
+            document.getElementById('uploadLabel').classList.remove('text-green-600');
+            uploadedFileUrl = "";
+            
+            alert("Success! Your Trade Mark and Certificate data have been injected into the UI Registry list.");
+        }
+
+        // Render table records
+        function renderRegistry(filteredList = null) {
+            const tbody = document.getElementById('registryBody');
+            const listToRender = filteredList ? filteredList : localRegistry;
+            
+            // Default hardcoded records if empty and no search filter
+            if (listToRender.length === 0 && !filteredList) {
+                tbody.innerHTML = `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-3 font-mono font-bold text-sgGovBlue border-r border-gray-200">T26148994A</td>
+                        <td class="p-3 border-r border-gray-200"><span class="font-bold text-gray-900 block">SINGAPORE AIRLINES</span><span class="text-[10px] text-gray-400 block">Owner: SIA Ltd</span></td>
+                        <td class="p-3 text-center border-r border-gray-200">Class 39</td>
+                        <td class="p-3 border-r border-gray-200"><span class="px-2 py-0.5 bg-green-100 text-green-800 border border-green-300 font-bold text-[10px] uppercase">Registered</span></td>
+                        <td class="p-3 text-center"><span class="text-gray-400 italic text-[11px]"><i class="fa-solid fa-lock text-[10px]"></i> Standard Record</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-3 font-mono font-bold text-sgGovBlue border-r border-gray-200">T2698765B</td>
+                        <td class="p-3 border-r border-gray-200"><span class="font-bold text-gray-900 block">RAZER OMNI</span><span class="text-[10px] text-gray-400 block">Owner: Razer Asia</span></td>
+                        <td class="p-3 text-center border-r border-gray-200">Class 09</td>
+                        <td class="p-3 border-r border-gray-200"><span class="px-2 py-0.5 bg-amber-100 text-amber-800 border border-amber-300 font-bold text-[10px] uppercase">Pending</span></td>
+                        <td class="p-3 text-center"><span class="text-gray-400 italic text-[11px]"><i class="fa-solid fa-lock text-[10px]"></i> Standard Record</span></td>
+                    </tr>
+                `;
+                document.getElementById('liveCount').innerText = "Total Records: 2";
+                return;
+            }
+
+            if (listToRender.length === 0 && filteredList) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-gray-500 font-bold">No matching records found in the official registry grid.</td></tr>`;
+                document.getElementById('liveCount').innerText = "Total Records: 0";
+                return;
+            }
+
+            tbody.innerHTML = "";
+            listToRender.forEach(item => {
+                let statusClass = "bg-green-100 text-green-800 border-green-300";
+                if(item.status !== 'Registered') statusClass = "bg-amber-100 text-amber-800 border-amber-300";
+
+                let certificateButton = `<span class="text-gray-400 italic">No File</span>`;
+                if(item.file !== "#") {
+                    certificateButton = `<a href="${item.file}" target="_blank" class="bg-sgGovBlue hover:bg-red-800 text-white font-bold px-2 py-1 text-[10px] rounded inline-flex items-center gap-1 transition shadow-sm"><i class="fa-solid fa-file-pdf"></i> View Cert</a>`;
+                }
+
+                const row = `
+                    <tr class="hover:bg-slate-50 transition bg-yellow-50/40">
+                        <td class="p-3 font-mono font-bold text-sgGovBlue border-r border-gray-200">${item.id}</td>
+                        <td class="p-3 border-r border-gray-200"><span class="font-bold text-gray-900 block">${item.mark}</span><span class="text-[10px] text-gray-500 block">Owner: ${item.owner}</span></td>
+                        <td class="p-3 text-center border-r border-gray-200">${item.class}</td>
+                        <td class="p-3 border-r border-gray-200"><span class="px-2 py-0.5 ${statusClass} border font-bold text-[10px] uppercase">${item.status}</span></td>
+                        <td class="p-3 text-center">${certificateButton}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+
+            document.getElementById('liveCount').innerText = `Total Records: ${listToRender.length}`;
+        }
+
+        // Search Engine Simulation
+        function performSearch() {
+            const query = document.getElementById('searchQuery').value.trim().toLowerCase();
+            if(!query) {
+                renderRegistry(); // Reset view
+                return;
+            }
+
+            const filtered = localRegistry.filter(item => 
+                item.mark.toLowerCase().includes(query) || 
+                item.id.toLowerCase().includes(query)
+            );
+
+            renderRegistry(filtered);
         }
     </script>
 </body>

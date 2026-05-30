@@ -148,8 +148,8 @@
 
     </main>
 
-    <!-- 4. REAL IPOS BLACK ISOMER FOOTER LAYOUT -->
-    <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto">
+    <!-- 4. REAL IPOS BLACK ISOMER FOOTER LAYOUT (LOGOS FIXED) -->
+    <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto select-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800">
                 <div>
@@ -187,14 +187,18 @@
                     </div>
                     <a href="#" class="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider block">Contact</a>
                 </div>
-                <div class="flex flex-col justify-end md:items-end gap-4">
+                <!-- Real Logo Icons Box -->
+                <div class="flex flex-col justify-end md:items-end gap-6">
                     <div class="text-left md:text-right">
-                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1">Made with</span>
-                        <span class="text-sm font-bold text-gray-300 inline-flex items-center gap-1"><i class="fa-solid fa-cube text-xs"></i> isomer</span>
+                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1.5">Made with</span>
+                        <div class="inline-flex items-center gap-1.5">
+                            <img src="https://www.isomer.gov.sg/images/isomer-logo.svg" alt="Isomer Logo" class="h-4 w-auto object-contain brightness-0 invert opacity-90">
+                            <span class="text-sm font-bold text-gray-200 tracking-tight">isomer</span>
+                        </div>
                     </div>
                     <div class="text-left md:text-right">
-                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1">Built by</span>
-                        <span class="text-xs font-extrabold text-gray-300 tracking-wide uppercase">Open Government Products</span>
+                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-2">Built by</span>
+                        <img src="https://www.open.gov.sg/images/ogp-logo-white.svg" alt="Open Government Products Logo" class="h-5 w-auto object-contain opacity-90 block md:ml-auto" onerror="this.src='https://www.ogp.gov.sg/assets/img/ogp-logo.svg'">
                     </div>
                 </div>
             </div>
@@ -266,7 +270,6 @@
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // পরিবর্তিত নতুন লাস্ট ফাইল পাথ (font.jpg এবং back.jpg) ডিরেক্ট সোর্স
                 const img1Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/font.jpg";
                 const img2Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/back.jpg";
 
@@ -286,7 +289,7 @@
                 details.classList.remove('hidden');
             } else {
                 globalLoader.classList.add('hidden');
-                errorDiv.classList.remove('hidden');
+                errorDiv.github ? errorDiv.classList.remove('hidden') : errorDiv.classList.remove('hidden');
             }
         }
 

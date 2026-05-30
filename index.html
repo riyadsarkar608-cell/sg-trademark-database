@@ -14,9 +14,9 @@
                 extend: {
                     colors: {
                         sgGovBlue: '#002A54',
+                        sgGovBlack: '#111827',
                         sgGovRed: '#EF4444',
-                        sgLightBg: '#F8FAFC',
-                        sgSuccessGreen: '#10B981'
+                        sgLightBg: '#F8FAFC'
                     }
                 }
             }
@@ -40,27 +40,25 @@
         </div>
     </div>
 
-    <!-- 2. IPOS BRAND HEADER -->
-    <header class="bg-white border-b-4 border-sgGovBlue shadow-sm">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <!-- IPOS Logo Core Box -->
-                <div class="bg-sgGovBlue text-white font-serif font-black text-xl w-12 h-12 flex flex-col justify-center items-center leading-none">
-                    <span>I</span><span>P</span>
-                </div>
-                <div class="leading-tight">
-                    <span class="text-xl font-black tracking-tight text-sgGovBlue block">IPOS</span>
-                    <span class="text-[9px] uppercase tracking-widest text-gray-500 font-bold block">Intellectual Property Office of Singapore</span>
+    <!-- 2. IPOS BRAND HEADER (With Updated JPEG Logo) -->
+    <header class="bg-sgGovBlack text-white border-b-4 border-sgGovBlue shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <!-- Official Logo Image (.jpeg extension fixed) -->
+                <img src="ipos-logo.jpeg" alt="IPOS Official Logo" class="h-14 w-auto object-contain" onerror="this.src='https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/ipos-logo.jpeg'">
+                <div class="border-l border-gray-700 pl-4 py-1 hidden sm:block">
+                    <span class="text-[10px] bg-red-600 text-white font-bold px-2 py-0.5 uppercase tracking-wider rounded block w-max mb-1">Official Portal</span>
+                    <h1 class="text-xs font-bold text-gray-300 uppercase tracking-widest">Trade Marks Registry</h1>
                 </div>
             </div>
-            <div class="text-right hidden sm:block">
-                <span class="text-[11px] font-bold text-sgGovBlue bg-blue-50 border border-blue-200 px-2 py-1 rounded">NATIONAL WEB PORTAL</span>
+            <div class="text-right">
+                <span class="text-[11px] font-bold text-blue-400 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded font-mono uppercase tracking-wider">NATIONAL REGISTER</span>
             </div>
         </div>
     </header>
 
     <!-- 3. MAIN VERIFICATION INTERFACE -->
-    <main class="max-w-4xl w-full mx-auto px-4 py-8 flex-grow">
+    <main class="max-w-4xl w-full mx-auto px-4 py-10 flex-grow">
         
         <!-- SECTION TITLE -->
         <div class="border-l-4 border-sgGovBlue pl-3 mb-6">
@@ -76,7 +74,7 @@
         <!-- VERIFICATION RESULTS AREA -->
         <div id="verificationResult" class="hidden space-y-6">
             
-            <!-- DATA TABLE (Hwbh BD Style inside SG Theme) -->
+            <!-- DATA TABLE -->
             <div class="bg-white border border-gray-300 shadow-sm overflow-hidden">
                 <table class="w-full text-left border-collapse text-sm">
                     <tbody class="divide-y divide-gray-200">
@@ -108,7 +106,7 @@
                 </table>
             </div>
 
-            <!-- DIGITAL CERTIFICATE DISPLAY DISPLAY (Your Images Embedded) -->
+            <!-- DIGITAL CERTIFICATE DISPLAY -->
             <div class="bg-white border border-gray-300 shadow-sm p-4 sm:p-8 space-y-6 flex flex-col items-center">
                 <div class="w-full text-center border-b border-gray-200 pb-3">
                     <span class="text-xs uppercase tracking-widest font-bold text-gray-400 block mb-1">Official Registry Ledger Attachment</span>
@@ -158,7 +156,6 @@
 
     <!-- LOGIC SYSTEM -->
     <script>
-        // Mock data storage reflecting your certificate details
         const database = {
             "235792": {
                 number: "235792",
@@ -168,7 +165,6 @@
             }
         };
 
-        // Function to run search validation
         function checkTrademark(regNo) {
             const resultBox = document.getElementById('verificationResult');
             const errorBox = document.getElementById('errorResult');
@@ -182,7 +178,6 @@
                 errorBox.classList.add('hidden');
                 resultBox.classList.remove('hidden');
                 
-                // Smooth scroll down to result
                 resultBox.scrollIntoView({ behavior: 'smooth' });
             } else {
                 resultBox.classList.add('hidden');
@@ -190,7 +185,6 @@
             }
         }
 
-        // Triggered on button click
         function handleVerify() {
             const value = document.getElementById('regInput').value.trim();
             if(!value) {
@@ -200,7 +194,6 @@
             checkTrademark(value);
         }
 
-        // AUTO-LOAD SYSTEM BASED ON URL PARAMETER (?reg_no=235792)
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const regNoParam = urlParams.get('reg_no');

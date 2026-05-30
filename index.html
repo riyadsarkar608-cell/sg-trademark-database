@@ -30,7 +30,7 @@
 <body class="bg-[#F9FAFC] text-sgTextDark antialiased min-h-screen flex flex-col">
 
     <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600 select-none">
-        <img src="https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/ChatGPT%20Image%20May%2030%2C%202026%2C%2011_49_35%20PM.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
+        <img src="./ChatGPT Image May 30, 2026, 11_49_35 PM.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
             <span class="text-gray-400 mx-1">|</span>
@@ -118,13 +118,13 @@
                         <div id="imgLoader1" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader1').classList.add('hidden'); this.classList.remove('opacity-0');">
+                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="hideLoader(1)">
                     </div>
                     <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
                         <div id="imgLoader2" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader2').classList.add('hidden'); this.classList.remove('opacity-0');">
+                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="hideLoader(2)">
                     </div>
                 </div>
             </div>
@@ -250,25 +250,31 @@
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
-                // রিসেট লোডার ভিজিবিলিটি
+                // রিসেট ও লোডার চালু
                 document.getElementById('imgLoader1').classList.remove('hidden');
                 document.getElementById('imgLoader2').classList.remove('hidden');
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // সরাসরি গিটহাব র পাথকে সোর্স হিসেবে ডিফাইন করা হলো
-                const img1Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/" + record.page1;
-                const img2Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/" + record.page2;
-
-                // সরাসরি HTML এলিমেন্টে ইমেজ সোর্স পুশ
-                document.getElementById('certImg1').src = img1Path;
-                document.getElementById('certImg2').src = img2Path;
+                // FIXED: গিটহাবের প্রাইভেট রেপো রেস্ট্রিকশন এড়াতে Vercel-এর নিজস্ব ডিরেক্টরি রুট পাথ ব্যবহার করা হলো
+                document.getElementById('certImg1').src = "./" + record.page1;
+                document.getElementById('certImg2').src = "./" + record.page2;
 
                 globalLoader.classList.add('hidden');
                 details.classList.remove('hidden');
             } else {
                 globalLoader.classList.add('hidden');
                 errorDiv.classList.remove('hidden');
+            }
+        }
+
+        // ইমেজ লোড শেষ হলে স্পিনার অফ করার নিরাপদ মেইন ফাংশন
+        function hideLoader(pageNumber) {
+            const loader = document.getElementById(`imgLoader${pageNumber}`);
+            const img = document.getElementById(`certImg${pageNumber}`);
+            if (loader && img) {
+                loader.classList.add('hidden');
+                img.classList.remove('opacity-0');
             }
         }
     </script>

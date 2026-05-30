@@ -14,10 +14,9 @@
                 extend: {
                     colors: {
                         sgGovBlue: '#002A54',
-                        sgGovRed: '#EF4A24',
-                        sgLogoGrey: '#4A5568',
-                        sgLogoGold: '#A38A75',
-                        sgPeachBg: '#FCF3F0'
+                        sgGovRed: '#A31D1D',
+                        sgGovGray: '#F2F5F8',
+                        sgTextDark: '#222222'
                     }
                 }
             }
@@ -27,11 +26,11 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     </style>
 </head>
-<body class="bg-[#F9FAFC] text-[#222222] antialiased">
+<body class="bg-[#F9FAFC] text-sgTextDark antialiased">
 
     <!-- 1. OFFICIAL SINGAPORE GOVERNMENT MASTHEAD -->
     <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg" alt="Singapore Crest" class="h-3.5 opacity-80">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg" alt="Singapore Crest" class="h-3 opacity-80">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
             <span class="text-gray-400 mx-1">|</span>
@@ -39,172 +38,158 @@
         </div>
     </div>
 
-    <!-- 2. IPOS REAL SITE BRAND HEADER & NAVIGATION -->
-    <header class="bg-sgPeachBg border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            <div class="flex items-center gap-3">
-                <div class="flex flex-col">
-                    <div class="flex items-center font-sans tracking-tight text-4xl font-black select-none leading-none">
-                        <span class="text-sgGovRed">IP</span><span class="text-sgLogoGrey">OS</span>
+    <!-- 2. IPOS OFFICIAL BRAND HEADER -->
+    <header class="bg-white border-b-2 border-[#002A54] shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <!-- IPOS Exact Real Logo Layout From 1000149028.png -->
+                <div class="flex items-center gap-3 border-r border-gray-300 pr-5">
+                    <div class="flex items-center font-sans tracking-tighter text-4xl font-black select-none">
+                        <span class="text-[#EF4A24]">IP</span><span class="text-[#4A5568]">OS</span>
                     </div>
-                    <span class="text-[8px] uppercase tracking-[0.08em] text-sgLogoGold font-bold block mt-1 max-w-[130px] leading-tight font-sans">
-                        Intellectual Property Office of Singapore
-                    </span>
+                    <div class="leading-none">
+                        <span class="text-[9px] uppercase tracking-[0.12em] text-[#4A5568] font-extrabold block">Intellectual Property</span>
+                        <span class="text-[9px] uppercase tracking-[0.12em] text-[#4A5568] font-extrabold block mt-0.5">Office of Singapore</span>
+                    </div>
                 </div>
-                <div class="h-10 w-px bg-gray-300 mx-2 hidden sm:block"></div>
-                <div class="hidden sm:block">
-                    <span class="text-[9px] bg-sgGovRed/10 text-sgGovRed font-bold px-2 py-1 border border-sgGovRed/20 rounded">
-                        Digital Hub
-                    </span>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-semibold text-[#1A202C]">
-                <a href="#" class="hover:text-sgGovRed transition flex items-center gap-1">About IP <i class="fa-solid fa-chevron-down text-[10px] opacity-70"></i></a>
-                <a href="#" class="hover:text-sgGovRed transition flex items-center gap-1">Manage IP <i class="fa-solid fa-chevron-down text-[10px] opacity-70"></i></a>
-                <a href="#" class="hover:text-sgGovRed transition flex items-center gap-1">Global IP Hub <i class="fa-solid fa-chevron-down text-[10px] opacity-70"></i></a>
-                <a href="#" class="text-sgGovRed border-b-2 border-sgGovRed pb-0.5 flex items-center gap-1">eServices <i class="fa-solid fa-chevron-down text-[10px]"></i></a>
-                <a href="#" class="hover:text-sgGovRed transition flex items-center gap-1">FAQs <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-500"></i></a>
-                <div class="flex items-center gap-3 pl-4 border-l border-gray-300">
-                    <button class="text-gray-700 hover:text-sgGovRed text-base"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <button class="bg-sgGovBlue hover:bg-slate-800 text-white text-xs font-bold px-3 py-1.5 rounded transition flex items-center gap-1">
-                        <i class="fa-solid fa-shield-halved text-[10px] text-red-400"></i> Singpass
-                    </button>
+                <!-- Portal Title -->
+                <div>
+                    <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 uppercase tracking-wider rounded border border-amber-200 block w-max mb-0.5">IPOS Digital Hub</span>
+                    <h1 class="text-md font-bold text-[#002A54] uppercase tracking-wide">Trade Marks National Register</h1>
                 </div>
             </div>
-
+            
+            <div class="flex items-center gap-3 text-xs">
+                <span class="text-gray-500 hidden md:inline"><i class="fa-solid fa-circle text-green-500 text-[9px] mr-1"></i> System Status: Operational</span>
+                <button class="bg-[#D1E3F8] hover:bg-[#C0D8F3] text-[#002A54] font-bold px-3 py-2 border border-[#A3C7EE] transition flex items-center gap-1.5">
+                    Login
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- 3. MAIN CONTENT AREA -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- 3. MAIN PORTAL CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <!-- TRADEMARK VERIFICATION SEARCH PANEL -->
-        <div class="bg-white border border-gray-300 shadow-sm mb-8">
-            <div class="bg-sgGovBlue text-white px-4 py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-between">
-                <span><i class="fa-solid fa-shield-check mr-1.5 text-orange-300"></i> National Trademark Verification Portal</span>
-                <span class="text-[10px] bg-emerald-600 text-white font-mono px-2 py-0.5 rounded">SECURE CONNECTION</span>
+        <!-- Search Box -->
+        <div class="bg-white border border-gray-300 shadow-sm max-w-3xl mx-auto mb-8">
+            <div class="bg-sgGovBlue text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-search mr-1.5 text-red-300"></i> ENTER TRADEMARK APPLICATION NUMBER
             </div>
-            <div class="p-6 bg-[#F2F5F8] border-b border-gray-200">
-                <label class="block font-bold text-gray-700 text-xs uppercase tracking-wider mb-2">Enter Trademark Application Number</label>
-                <div class="flex gap-2">
-                    <input type="text" id="searchQuery" placeholder="e.g., 402038758675Y" class="w-full border border-gray-400 p-3 text-sm font-mono tracking-wide focus:border-sgGovBlue focus:outline-none bg-white">
-                    <button onclick="searchTrademark()" class="bg-sgGovBlue hover:bg-slate-800 text-white font-bold px-8 uppercase tracking-wider text-xs transition">Verify</button>
-                </div>
+            <div class="p-6 bg-sgGovGray flex gap-3 text-xs">
+                <input type="text" id="searchQuery" placeholder="e.g., 402038758675Y" class="w-full border border-gray-400 p-3 text-sm font-mono focus:border-sgGovBlue focus:outline-none bg-white uppercase">
+                <button onclick="performSearch()" class="bg-sgGovBlue hover:bg-slate-800 text-white font-bold px-8 uppercase tracking-wider text-xs transition">Verify</button>
             </div>
         </div>
 
-        <!-- ERROR MESSAGE -->
-        <div id="errorBox" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 text-xs text-red-700">
-            <i class="fa-solid fa-triangle-exclamation mr-1"></i> Invalid Registration Number. No records matching this ID found in the Singapore Registry.
-        </div>
-
-        <!-- LIVE RESULT VIEW CONTAINER -->
-        <div id="resultContainer" class="hidden space-y-6 animate-fadeIn">
-            
-            <!-- Information Grid -->
-            <div class="bg-white border border-gray-300 shadow-sm overflow-hidden">
-                <div class="bg-gray-100 px-4 py-2.5 border-b border-gray-300 text-xs font-bold uppercase text-gray-700 tracking-wide">
-                    Official Registry Details
+        <!-- Official Registry Details Card (Initially Hidden) -->
+        <div id="detailsContainer" class="hidden max-w-3xl mx-auto bg-white border border-gray-300 shadow-sm mb-8">
+            <div class="bg-gray-100 border-b border-gray-300 px-4 py-3 text-xs font-bold text-sgGovBlue uppercase tracking-wide">
+                Official Registry Details
+            </div>
+            <div class="p-6 space-y-4 text-sm border-b border-gray-200">
+                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
+                    <span class="text-gray-500 font-medium">Trademark Number</span>
+                    <span id="resNum" class="font-mono font-bold text-gray-900"></span>
                 </div>
-                <div class="divide-y divide-gray-200 text-xs">
-                    <div class="grid grid-cols-3 p-3"><span class="font-bold text-gray-500">Trademark Number</span><span class="col-span-2 font-mono font-bold text-sgGovBlue" id="resAppNo"></span></div>
-                    <div class="grid grid-cols-3 p-3"><span class="font-bold text-gray-500">Owner / Brand Name</span><span class="col-span-2 font-bold text-gray-900" id="resName"></span></div>
-                    <div class="grid grid-cols-3 p-3"><span class="font-bold text-gray-500">Filing / Application Date</span><span class="col-span-2 text-gray-700" id="resDate"></span></div>
-                    <div class="grid grid-cols-3 p-3"><span class="font-bold text-gray-500">Classification</span><span class="col-span-2 font-semibold text-gray-700" id="resClass"></span></div>
-                    <div class="grid grid-cols-3 p-3"><span class="font-bold text-gray-500">Status</span><span class="col-span-2"><span id="resStatus" class="px-2 py-0.5 bg-green-100 text-green-800 border border-green-300 font-bold text-[10px] uppercase rounded"></span></span></div>
-                    <div class="grid grid-cols-3 p-3"><span class="font-bold text-gray-500">Authority Office</span><span class="col-span-2 text-gray-600 font-semibold">Intellectual Property Office of Singapore (IPOS)</span></div>
+                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
+                    <span class="text-gray-500 font-medium">Owner / Brand Name</span>
+                    <span id="resName" class="font-bold text-gray-900 uppercase"></span>
+                </div>
+                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
+                    <span class="text-gray-500 font-medium">Filing / Application Date</span>
+                    <span id="resDate" class="text-gray-800"></span>
+                </div>
+                <div class="grid grid-cols-2 py-2 border-b border-gray-100">
+                    <span class="text-gray-500 font-medium">Classification</span>
+                    <span id="resClass" class="font-semibold text-gray-800"></span>
+                </div>
+                <div class="grid grid-cols-2 py-2 border-b border-gray-100 items-center">
+                    <span class="text-gray-500 font-medium">Status</span>
+                    <div><span id="resStatus" class="px-2 py-0.5 bg-green-100 text-green-800 border border-green-300 font-bold text-xs uppercase tracking-wide"></span></div>
+                </div>
+                <div class="grid grid-cols-2 py-2">
+                    <span class="text-gray-500 font-medium">Authority Office</span>
+                    <span class="text-gray-800 font-medium">Intellectual Property Office of Singapore (IPOS)</span>
                 </div>
             </div>
 
-            <!-- Main Certificate Visual Display (Vertical Layout) -->
-            <div class="bg-white border border-gray-300 shadow-sm p-4">
-                <div class="flex justify-between items-center border-b border-gray-200 pb-3 mb-4 text-xs">
-                    <span class="font-bold text-gray-700 uppercase"><i class="fa-solid fa-file-invoice mr-1 text-sgGovRed"></i> Document Verification Frame (Page 1 & 2)</span>
-                    <span class="text-[11px] text-gray-500 font-medium">Official Registry Document Signed</span>
+            <!-- DOCUMENT VERIFICATION FRAME (IMAGES SECTION) -->
+            <div class="bg-gray-50 p-4 sm:p-6">
+                <div class="flex items-center gap-2 text-xs font-bold text-gray-700 uppercase tracking-wide mb-4">
+                    <i class="fa-solid fa-file-invoice text-sgGovRed text-base"></i>
+                    <span>Document Verification Frame (Page 1 & 2)</span>
                 </div>
                 
-                <!-- Both Pages stacked vertically here -->
-                <div class="w-full flex flex-col gap-6 items-center bg-gray-50 border border-gray-200 p-4 rounded">
-                    <!-- Page 1 (Front) -->
-                    <div class="w-full max-w-2xl bg-white shadow border border-gray-300 p-1">
-                        <img id="certPage1" src="" alt="IPOS Certificate Page 1" class="w-full h-auto">
+                <!-- Images container with optimization -->
+                <div class="space-y-6 flex flex-col items-center">
+                    <!-- Page 1 Image -->
+                    <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
+                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block" loading="eager">
                     </div>
-                    
-                    <!-- Page 2 (Back) -->
-                    <div class="w-full max-w-2xl bg-white shadow border border-gray-300 p-1">
-                        <img id="certPage2" src="" alt="IPOS Certificate Page 2" class="w-full h-auto">
+                    <!-- Page 2 Image -->
+                    <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
+                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block" loading="eager">
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- No Records Found Alert -->
+        <div id="errorContainer" class="hidden max-w-3xl mx-auto bg-red-50 border border-red-300 p-4 text-center text-sm font-semibold text-red-800">
+            <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> No official records matched this application number in the Singapore Registry.
         </div>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-sgGovBlue text-white mt-40 border-t-4 border-sgGovRed text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <p class="text-center text-slate-400 text-[11px]">&copy; 2026 Government of Singapore. Intellectual Property Office of Singapore Registry Division.</p>
-        </div>
-    </footer>
-
-    <!-- LOGIC FOR FETCHING CODES FROM GITHUB DATA.JSON -->
+    <!-- JAVASCRIPT FOR INSTANT LOADING -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const regNo = urlParams.get('reg_no');
-            if (regNo) {
-                document.getElementById('searchQuery').value = regNo;
-                searchTrademark();
+        // গিটহাব রেপোজিটরির রুট ডিরেক্টরি থেকে ডিরেক্ট ছবি লোড করার মক ডাটাবেস
+        const mockDatabase = {
+            "402038758675Y": {
+                id: "402038758675Y",
+                mark: "TRADER RAJON 6",
+                class: "Class 41",
+                status: "REGISTERED",
+                owner: "TRADER RAJON 6",
+                date: "01 November 2025",
+                page1: "page1.png", // গিটহাবের রুট ফোল্ডার থেকে ফাইল লোড হবে
+                page2: "page2.png"  // গিটহাবের রুট ফোল্ডার থেকে ফাইল লোড হবে
             }
-        });
+        };
 
-        function searchTrademark() {
-            const query = document.getElementById('searchQuery').value.trim();
-            const errorBox = document.getElementById('errorBox');
-            const resultContainer = document.getElementById('resultContainer');
+        function performSearch() {
+            const query = document.getElementById('searchQuery').value.trim().toUpperCase();
+            const details = document.getElementById('detailsContainer');
+            const errorDiv = document.getElementById('errorContainer');
 
-            if(!query) {
-                alert("Please enter a valid application number.");
+            if (!query) {
+                alert("Please enter an application number.");
                 return;
             }
 
-            fetch('data.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Database file not found');
-                    return response.json();
-                })
-                .then(data => {
-                    const match = data.find(item => item.app_no === query);
+            // Check if record exists
+            if (mockDatabase[query]) {
+                const record = mockDatabase[query];
+                
+                // Inject Text Data
+                document.getElementById('resNum').innerText = record.id;
+                document.getElementById('resName').innerText = record.mark;
+                document.getElementById('resDate').innerText = record.date;
+                document.getElementById('resClass').innerText = record.class;
+                document.getElementById('resStatus').innerText = record.status;
+                
+                // Inject Image URLs (ডিরেক্ট সোর্স হওয়ায় ইনস্ট্যান্ট লোড হবে)
+                document.getElementById('certImg1').src = record.page1;
+                document.getElementById('certImg2').src = record.page2;
 
-                    if(match) {
-                        errorBox.classList.add('hidden');
-                        
-                        document.getElementById('resAppNo').innerText = match.app_no;
-                        document.getElementById('resName').innerText = match.mark_name;
-                        document.getElementById('resDate').innerText = match.filing_date;
-                        document.getElementById('resClass').innerText = match.class;
-                        document.getElementById('resStatus').innerText = match.status;
-                        
-                        // Dynamically load page 1 and page 2 vertically
-                        document.getElementById('certPage1').src = match.cert_page1;
-                        document.getElementById('certPage2').src = match.cert_page2;
-
-                        resultContainer.classList.remove('hidden');
-
-                        const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?reg_no=' + query;
-                        window.history.pushState({path:newurl},'',newurl);
-                    } else {
-                        resultContainer.classList.add('hidden');
-                        errorBox.classList.remove('hidden');
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Error loading database file.");
-                });
+                // Show Content
+                details.classList.remove('hidden');
+                errorDiv.classList.add('hidden');
+            } else {
+                details.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+            }
         }
     </script>
 </body>

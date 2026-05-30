@@ -118,13 +118,13 @@
                         <div id="imgLoader1" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="imageLoaded(1)">
+                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader1').classList.add('hidden'); this.classList.remove('opacity-0');">
                     </div>
                     <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
                         <div id="imgLoader2" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="imageLoaded(2)">
+                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader2').classList.add('hidden'); this.classList.remove('opacity-0');">
                     </div>
                 </div>
             </div>
@@ -250,26 +250,19 @@
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
+                // রিসেট লোডার ভিজিবিলিটি
                 document.getElementById('imgLoader1').classList.remove('hidden');
                 document.getElementById('imgLoader2').classList.remove('hidden');
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // FIXED: ডিরেক্ট সোর্স জেনারেশন পাথ নিখুঁত করা হলো
+                // সরাসরি গিটহাব র পাথকে সোর্স হিসেবে ডিফাইন করা হলো
                 const img1Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/" + record.page1;
                 const img2Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/" + record.page2;
 
-                const p1 = new Image();
-                p1.onload = () => {
-                    document.getElementById('certImg1').src = img1Path;
-                };
-                p1.src = img1Path;
-
-                const p2 = new Image();
-                p2.onload = () => {
-                    document.getElementById('certImg2').src = img2Path;
-                };
-                p2.src = img2Path;
+                // সরাসরি HTML এলিমেন্টে ইমেজ সোর্স পুশ
+                document.getElementById('certImg1').src = img1Path;
+                document.getElementById('certImg2').src = img2Path;
 
                 globalLoader.classList.add('hidden');
                 details.classList.remove('hidden');
@@ -277,11 +270,6 @@
                 globalLoader.classList.add('hidden');
                 errorDiv.classList.remove('hidden');
             }
-        }
-
-        function imageLoaded(pageNumber) {
-            document.getElementById(`imgLoader${pageNumber}`).classList.add('hidden');
-            document.getElementById(`certImg${pageNumber}`).classList.remove('opacity-0');
         }
     </script>
 </body>

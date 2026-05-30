@@ -32,9 +32,8 @@
 <body class="bg-[#F9FAFC] text-sgTextDark antialiased min-h-screen flex flex-col">
 
     <!-- 1. OFFICIAL SINGAPORE GOVERNMENT MASTHEAD WITH LION LOGO -->
-    <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600 select-none">
-        <!-- Direct Raw Image Source for the Uploaded Lion Logo -->
-        <img src="https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/ChatGPT%20Image%20May%2030%2C%202026%2C%2011_49_35%20PM.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
+    <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600">
+        <img src="./ChatGPT Image May 30, 2026, 11_49_35 PM.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
             <span class="text-gray-400 mx-1">|</span>
@@ -43,7 +42,7 @@
     </div>
 
     <!-- 2. IPOS OFFICIAL BRAND HEADER -->
-    <header class="bg-white border-b-2 border-[#002A54] shadow-sm select-none">
+    <header class="bg-white border-b-2 border-[#002A54] shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="flex items-center font-sans tracking-tighter text-3xl sm:text-4xl font-black select-none">
@@ -150,7 +149,7 @@
     </main>
 
     <!-- 4. REAL IPOS BLACK ISOMER FOOTER LAYOUT -->
-    <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto select-none">
+    <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800">
                 <div>
@@ -188,17 +187,14 @@
                     </div>
                     <a href="#" class="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider block">Contact</a>
                 </div>
-                <div class="flex flex-col justify-end md:items-end gap-6">
+                <div class="flex flex-col justify-end md:items-end gap-4">
                     <div class="text-left md:text-right">
-                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1.5">Made with</span>
-                        <div class="inline-flex items-center gap-1.5">
-                            <img src="https://www.isomer.gov.sg/images/isomer-logo.svg" alt="Isomer Logo" class="h-4 w-auto object-contain brightness-0 invert opacity-90">
-                            <span class="text-sm font-bold text-gray-200 tracking-tight">isomer</span>
-                        </div>
+                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1">Made with</span>
+                        <span class="text-sm font-bold text-gray-300 inline-flex items-center gap-1"><i class="fa-solid fa-cube text-xs"></i> isomer</span>
                     </div>
                     <div class="text-left md:text-right">
-                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-2">Built by</span>
-                        <img src="https://www.open.gov.sg/images/ogp-logo-white.svg" alt="Open Government Products Logo" class="h-5 w-auto object-contain opacity-90 block md:ml-auto" onerror="this.src='https://www.ogp.gov.sg/assets/img/ogp-logo.svg'">
+                        <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-1">Built by</span>
+                        <span class="text-xs font-extrabold text-gray-300 tracking-wide uppercase">Open Government Products</span>
                     </div>
                 </div>
             </div>
@@ -215,7 +211,7 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR MOBILITY BOOST & BUG FIXES -->
+    <!-- JAVASCRIPT FOR MOBILE BOOST LOADING -->
     <script>
         let registryData = null;
 
@@ -270,9 +266,9 @@
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // ডিরেক্ট গিটহাব র পাথ দিয়ে লোড স্পিড ও ব্রোকেন ইমেজ বাগ ফিক্স করা হলো
-                const img1Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/" + record.page1;
-                const img2Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/" + record.page2;
+                // পরিবর্তিত নতুন লাস্ট ফাইল পাথ (font.jpg এবং back.jpg) ডিরেক্ট সোর্স
+                const img1Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/font.jpg";
+                const img2Path = "https://raw.githubusercontent.com/riyadsarkar608-cell/sg-trademark-database/main/back.jpg";
 
                 const p1 = new Image();
                 p1.src = img1Path;

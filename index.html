@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPOS | Trade Marks Search & Registration National Database</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -29,8 +31,10 @@
 </head>
 <body class="bg-[#F9FAFC] text-sgTextDark antialiased min-h-screen flex flex-col">
 
+    <!-- 1. OFFICIAL SINGAPORE GOVERNMENT MASTHEAD WITH LION LOGO -->
     <div class="bg-[#EDF2F7] border-b border-gray-300 text-[11px] py-1 px-4 sm:px-8 flex items-center gap-2 text-gray-600 select-none">
-        <img src="./ChatGPT Image May 30, 2026, 11_49_35 PM.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
+        <!-- রিয়েল সোর্স: আপনার গিটহাবে রাখা logu.png সরাসরি এখানে সেট করা হয়েছে -->
+        <img src="./logu.png" alt="Singapore Lion Symbol" class="h-4 w-auto block object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
         <div>
             <span class="font-semibold text-gray-700">A Singapore Government Agency Website</span>
             <span class="text-gray-400 mx-1">|</span>
@@ -38,6 +42,7 @@
         </div>
     </div>
 
+    <!-- 2. IPOS OFFICIAL BRAND HEADER -->
     <header class="bg-white border-b-2 border-[#002A54] shadow-sm select-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
             <div class="flex items-center gap-4">
@@ -59,8 +64,10 @@
         </div>
     </header>
 
+    <!-- 3. MAIN PORTAL CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
         
+        <!-- Search Box -->
         <div class="bg-white border border-gray-300 shadow-sm max-w-3xl mx-auto mb-6 sm:mb-8">
             <div class="bg-sgGovBlue text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider">
                 <i class="fa-solid fa-search mr-1.5 text-red-300"></i> ENTER TRADEMARK APPLICATION NUMBER
@@ -71,11 +78,13 @@
             </div>
         </div>
 
+        <!-- Global Loader Skeleton -->
         <div id="globalLoader" class="hidden text-center py-12 max-w-3xl mx-auto bg-white border border-gray-300 shadow-sm mb-8">
             <i class="fa-solid fa-circle-notch fa-spin text-3xl text-sgGovBlue mb-2"></i>
             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Connecting to National Registry Server...</p>
         </div>
 
+        <!-- Official Registry Details Card -->
         <div id="detailsContainer" class="hidden max-w-3xl mx-auto bg-white border border-gray-300 shadow-sm mb-8 fade-in">
             <div class="bg-gray-100 border-b border-gray-300 px-4 py-3 text-xs font-bold text-sgGovBlue uppercase tracking-wide">
                 Official Registry Details
@@ -107,6 +116,7 @@
                 </div>
             </div>
 
+            <!-- DOCUMENT VERIFICATION FRAME -->
             <div class="bg-gray-50 p-3 sm:p-6">
                 <div class="flex items-center gap-2 text-xs font-bold text-gray-700 uppercase tracking-wide mb-4">
                     <i class="fa-solid fa-file-invoice text-sgGovRed text-base"></i>
@@ -114,28 +124,32 @@
                 </div>
                 
                 <div class="space-y-4 sm:space-y-6 flex flex-col items-center">
+                    <!-- Page 1 Image Container -->
                     <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
                         <div id="imgLoader1" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="hideLoader(1)">
+                        <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader1').classList.add('hidden'); this.classList.remove('opacity-0');">
                     </div>
+                    <!-- Page 2 Image Container -->
                     <div class="bg-white p-1.5 border border-gray-300 shadow-sm w-full max-w-xl relative min-h-[220px] sm:min-h-[300px] flex items-center justify-center">
                         <div id="imgLoader2" class="absolute inset-0 flex items-center justify-center bg-white z-10">
                             <i class="fa-solid fa-spinner fa-spin text-2xl text-sgGovBlue"></i>
                         </div>
-                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="hideLoader(2)">
+                        <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block opacity-0 transition-opacity duration-200" onload="document.getElementById('imgLoader2').classList.add('hidden'); this.classList.remove('opacity-0');">
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- No Records Found Alert -->
         <div id="errorContainer" class="hidden max-w-3xl mx-auto bg-red-50 border border-red-300 p-4 text-center text-sm font-semibold text-red-800">
             <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> No official records matched this application number in the Singapore Registry.
         </div>
 
     </main>
 
+    <!-- 4. REAL IPOS BLACK ISOMER FOOTER LAYOUT -->
     <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto select-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800">
@@ -201,6 +215,7 @@
         </div>
     </footer>
 
+    <!-- JAVASCRIPT FOR FAST ROUTING & RENDER FIXES -->
     <script>
         let registryData = null;
 
@@ -250,31 +265,25 @@
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
-                // রিসেট ও লোডার চালু
+                // লোডার রিসেট
                 document.getElementById('imgLoader1').classList.remove('hidden');
                 document.getElementById('imgLoader2').classList.remove('hidden');
                 document.getElementById('certImg1').classList.add('opacity-0');
                 document.getElementById('certImg2').classList.add('opacity-0');
 
-                // FIXED: গিটহাবের প্রাইভেট রেপো রেস্ট্রিকশন এড়াতে Vercel-এর নিজস্ব ডিরেক্টরি রুট পাথ ব্যবহার করা হলো
-                document.getElementById('certImg1').src = "./" + record.page1;
-                document.getElementById('certImg2').src = "./" + record.page2;
+                // আপনার গিটহাবের রিয়েল ফাইল নামের প্যাথ ডিরেক্টরি বাইন্ডিং করা হলো
+                const img1Path = "./" + record.page1;
+                const img2Path = "./" + record.page2;
+
+                // ইনলাইন লোড বুস্টার স্পিড লজিক
+                document.getElementById('certImg1').src = img1Path;
+                document.getElementById('certImg2').src = img2Path;
 
                 globalLoader.classList.add('hidden');
                 details.classList.remove('hidden');
             } else {
                 globalLoader.classList.add('hidden');
                 errorDiv.classList.remove('hidden');
-            }
-        }
-
-        // ইমেজ লোড শেষ হলে স্পিনার অফ করার নিরাপদ মেইন ফাংশন
-        function hideLoader(pageNumber) {
-            const loader = document.getElementById(`imgLoader${pageNumber}`);
-            const img = document.getElementById(`certImg${pageNumber}`);
-            if (loader && img) {
-                loader.classList.add('hidden');
-                img.classList.remove('opacity-0');
             }
         }
     </script>

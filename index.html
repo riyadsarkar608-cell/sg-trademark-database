@@ -42,7 +42,7 @@
     <header class="bg-white border-b-2 border-[#002A54] shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <!-- IPOS Exact Real Logo Layout From 1000149028.png -->
+                <!-- IPOS Real Logo Layout -->
                 <div class="flex items-center gap-3 border-r border-gray-300 pr-5">
                     <div class="flex items-center font-sans tracking-tighter text-4xl font-black select-none">
                         <span class="text-[#EF4A24]">IP</span><span class="text-[#4A5568]">OS</span>
@@ -121,7 +121,6 @@
                     <span>Document Verification Frame (Page 1 & 2)</span>
                 </div>
                 
-                <!-- Images container with optimization -->
                 <div class="space-y-6 flex flex-col items-center">
                     <!-- Page 1 Image -->
                     <div class="bg-white p-2 border border-gray-300 shadow-sm w-full max-w-xl">
@@ -142,9 +141,9 @@
 
     </main>
 
-    <!-- JAVASCRIPT FOR INSTANT LOADING -->
+    <!-- JAVASCRIPT FOR AUTOMATIC LOADING -->
     <script>
-        // গিটহাব রেপোজিটরির রুট ডিরেক্টরি থেকে ডিরেক্ট ছবি লোড করার মক ডাটাবেস
+        // ডিরেক্ট আপনার গিটহাবের রিলিজ বা রুট পাথ থেকে ইমেজ সোর্স দেওয়া হলো
         const mockDatabase = {
             "402038758675Y": {
                 id: "402038758675Y",
@@ -153,37 +152,49 @@
                 status: "REGISTERED",
                 owner: "TRADER RAJON 6",
                 date: "01 November 2025",
-                page1: "page1.png", // গিটহাবের রুট ফোল্ডার থেকে ফাইল লোড হবে
-                page2: "page2.png"  // গিটহাবের রুট ফোল্ডার থেকে ফাইল লোড হবে
+                // Vercel পাথ ফিক্স করার জন্য ফুল ডিরেক্টরি পাথ সেট করা হলো
+                page1: "./page1.png", 
+                page2: "./page2.png"  
             }
         };
 
+        // এই ফাংশনটি ইউআরএল চেক করবে (Auto-load logic)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const regNo = urlParams.get('reg_no');
+            
+            if (regNo) {
+                document.getElementById('searchQuery').value = regNo;
+                processVerification(regNo.toUpperCase().trim());
+            }
+        });
+
         function performSearch() {
             const query = document.getElementById('searchQuery').value.trim().toUpperCase();
-            const details = document.getElementById('detailsContainer');
-            const errorDiv = document.getElementById('errorContainer');
-
             if (!query) {
                 alert("Please enter an application number.");
                 return;
             }
+            processVerification(query);
+        }
 
-            // Check if record exists
-            if (mockDatabase[query]) {
-                const record = mockDatabase[query];
+        function processVerification(appNumber) {
+            const details = document.getElementById('detailsContainer');
+            const errorDiv = document.getElementById('errorContainer');
+
+            if (mockDatabase[appNumber]) {
+                const record = mockDatabase[appNumber];
                 
-                // Inject Text Data
                 document.getElementById('resNum').innerText = record.id;
                 document.getElementById('resName').innerText = record.mark;
                 document.getElementById('resDate').innerText = record.date;
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 
-                // Inject Image URLs (ডিরেক্ট সোর্স হওয়ায় ইনস্ট্যান্ট লোড হবে)
-                document.getElementById('certImg1').src = record.page1;
-                document.getElementById('certImg2').src = record.page2;
+                // ইমেজের ক্যাশিং ইস্যু এড়াতে টাইমস্ট্যাম্পসহ ডিরেক্ট সোর্স সেট
+                document.getElementById('certImg1').src = record.page1 + "?v=" + new Date().getTime();
+                document.getElementById('certImg2').src = record.page2 + "?v=" + new Date().getTime();
 
-                // Show Content
                 details.classList.remove('hidden');
                 errorDiv.classList.add('hidden');
             } else {

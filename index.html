@@ -63,7 +63,6 @@
                 </div>
             </div>
             <div class="flex items-center gap-3 text-xs">
-                <!-- Singpass অফিশিয়াল লগইন লিংক বাটনটির সাথে যুক্ত করা হয়েছে -->
                 <a href="https://login.id.singpass.gov.sg/main" target="_blank" class="bg-[#D1E3F8] hover:bg-gradient-to-r hover:from-[#C0D8F3] hover:to-[#A3C7EE] text-[#002A54] font-bold px-4 py-2 border border-[#A3C7EE] transition rounded-sm shadow-sm inline-block">Login</a>
             </div>
         </div>
@@ -72,7 +71,7 @@
     <!-- 3. MAIN PORTAL CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
         
-        <!-- Search Box WITH PREMIUM GRADIENT -->
+        <!-- Search Box -->
         <div class="bg-white border border-gray-300 shadow-md max-w-3xl mx-auto mb-8 rounded-sm overflow-hidden">
             <div class="bg-gradient-to-r from-[#002A54] to-[#0A417A] text-white px-4 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-inner">
                 <i class="fa-solid fa-magnifying-glass text-blue-300 text-xs"></i>
@@ -278,7 +277,9 @@
                 
                 document.getElementById('resNum').innerText = record.id;
                 document.getElementById('resName').innerText = record.mark;
-                document.getElementById('resDate').innerText = record.date;
+                
+                // নতুন ডাটা ডিরেক্টরি ম্যাপ (filing_date না থাকলে আগের 'date' ফিল্ড ব্যাকআপ হিসেবে কাজ করবে)
+                document.getElementById('resDate').innerText = record.filing_date || record.date;
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;
                 

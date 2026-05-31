@@ -5,16 +5,7 @@
     "class": "Class 41",
     "status": "REGISTERED",
     "owner": "TRADER RAJON 6",
-    "filing_date": "01 November 2025",
-    "expiry_date": "01 November 2035",
-    "publication_date": "15 December 2025",
-    "specification": "Education; providing of training; entertainment; sporting and cultural activities; digital multimedia content creation; production of video and audio tracks; publishing of electronic publications and media platforms online.",
-    "history": [
-      {"date": "01 Nov 2025", "event": "Application Lodged & Received"},
-      {"date": "18 Nov 2025", "event": "Form and Classification Examination Cleared"},
-      {"date": "15 Dec 2025", "event": "Published in Trade Marks Journal for Opposition"},
-      {"date": "15 Mar 2026", "event": "Registered - National Certificate Issued"}
-    ],
+    "date": "01 November 2025",
     "page1": "402038758675Y.font.jpg",
     "page2": "402038758675Y.back.jpg"
   },
@@ -24,16 +15,7 @@
     "class": "Class 25",
     "status": "REGISTERED",
     "owner": "APEX HOLDINGS PTE. LTD.",
-    "filing_date": "14 January 2024",
-    "expiry_date": "14 January 2034",
-    "publication_date": "20 February 2024",
-    "specification": "Clothing, footwear, headgear; ready-made garments; jackets, t-shirts, trousers, and suits for formal and casual wear; manufacturing of fashion accessories and lifestyle apparel products.",
-    "history": [
-      {"date": "14 Jan 2024", "event": "Application Lodged & Received"},
-      {"date": "02 Feb 2024", "event": "Form and Classification Examination Cleared"},
-      {"date": "20 Feb 2024", "event": "Published in Trade Marks Journal for Opposition"},
-      {"date": "20 May 2024", "event": "Registered - National Certificate Issued"}
-    ],
+    "date": "14 January 2024",
     "page1": "demo1_font.jpg",
     "page2": "demo1_back.jpg"
   },
@@ -43,16 +25,7 @@
     "class": "Class 9",
     "status": "REGISTERED",
     "owner": "NEXUS SOLUTIONS SINGAPORE",
-    "filing_date": "22 March 2024",
-    "expiry_date": "22 March 2034",
-    "publication_date": "30 April 2024",
-    "specification": "Scientific, research, navigation, surveying, photographic, cinematographic, audiovisual, optical, weighing, measuring, signalling, detecting, testing, inspecting, life-saving and teaching apparatus and instruments; software development; mobile applications.",
-    "history": [
-      {"date": "22 Mar 2024", "event": "Application Lodged & Received"},
-      {"date": "10 Apr 2024", "event": "Form and Classification Examination Cleared"},
-      {"date": "30 Apr 2024", "event": "Published in Trade Marks Journal for Opposition"},
-      {"date": "30 Jul 2024", "event": "Registered - National Certificate Issued"}
-    ],
+    "date": "22 March 2024",
     "page1": "demo2_font.jpg",
     "page2": "demo2_back.jpg"
   },
@@ -62,16 +35,7 @@
     "class": "Class 5",
     "status": "REGISTERED",
     "owner": "GREEN LEAF HEALTHCARE",
-    "filing_date": "05 June 2024",
-    "expiry_date": "05 June 2034",
-    "publication_date": "12 July 2024",
-    "specification": "Pharmaceuticals, medical and veterinary preparations; sanitary preparations for medical purposes; dietetic food and substances adapted for medical or veterinary use, food for babies; dietary supplements for human beings.",
-    "history": [
-      {"date": "05 Jun 2024", "event": "Application Lodged & Received"},
-      {"date": "25 Jun 2024", "event": "Form and Classification Examination Cleared"},
-      {"date": "12 Jul 2024", "event": "Published in Trade Marks Journal for Opposition"},
-      {"date": "12 Oct 2024", "event": "Registered - National Certificate Issued"}
-    ],
+    "date": "05 June 2024",
     "page1": "demo3_font.jpg",
     "page2": "demo3_back.jpg"
   },
@@ -81,16 +45,7 @@
     "class": "Class 43",
     "status": "REGISTERED",
     "owner": "ROYAL HOSPITALITY GROUP",
-    "filing_date": "19 August 2024",
-    "expiry_date": "19 August 2034",
-    "publication_date": "24 September 2024",
-    "specification": "Services for providing food and drink; temporary accommodation; restaurant, catering, cafe, and cafeteria services; hospitality management and outdoor food preparation services for commercial events.",
-    "history": [
-      {"date": "19 Aug 2024", "event": "Application Lodged & Received"},
-      {"date": "05 Sep 2024", "event": "Form and Classification Examination Cleared"},
-      {"date": "24 Sep 2024", "event": "Published in Trade Marks Journal for Opposition"},
-      {"date": "24 Dec 2024", "event": "Registered - National Certificate Issued"}
-    ],
+    "date": "19 August 2024",
     "page1": "demo4_font.jpg",
     "page2": "demo4_back.jpg"
   },
@@ -100,15 +55,7 @@
     "class": "Class 39",
     "status": "PENDING",
     "owner": "ALPHA FREIGHT & SHIPPING",
-    "filing_date": "03 February 2026",
-    "expiry_date": "03 February 2036",
-    "publication_date": "Pending Publication",
-    "specification": "Transport; packaging and storage of goods; travel arrangement; freight forwarding, cargo shipping, courier services, and global supply chain management solutions.",
-    "history": [
-      {"date": "03 Feb 2026", "event": "Application Lodged & Received"},
-      {"date": "28 Feb 2026", "event": "Form and Classification Examination Passed"},
-      {"date": "In Progress", "event": "Pending Substantive Legal Examination Result"}
-    ],
+    "date": "03 February 2026",
     "page1": "demo5_font.jpg",
     "page2": "demo5_back.jpg"
   }

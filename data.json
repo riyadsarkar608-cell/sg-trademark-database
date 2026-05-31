@@ -8,5 +8,65 @@
     "date": "01 November 2025",
     "page1": "402038758675Y.font.jpg",
     "page2": "402038758675Y.back.jpg"
+  },
+  "50112233445A": {
+    "id": "50112233445A",
+    "mark": "APEX APPARELS",
+    "class": "Class 25",
+    "status": "REGISTERED",
+    "owner": "APEX HOLDINGS PTE. LTD.",
+    "date": "14 January 2024",
+    "page1": "demo1_font.jpg",
+    "page2": "demo1_back.jpg"
+  },
+  "50223344556B": {
+    "id": "50223344556B",
+    "mark": "NEXUS TECH GLOBAL",
+    "class": "Class 9",
+    "status": "REGISTERED",
+    "owner": "NEXUS SOLUTIONS SINGAPORE",
+    "date": "22 March 2024",
+    "page1": "demo2_font.jpg",
+    "page2": "demo2_back.jpg"
+  },
+  "50334455667C": {
+    "id": "50334455667C",
+    "mark": "GREEN LEAF ORGANICS",
+    "class": "Class 5",
+    "status": "REGISTERED",
+    "owner": "GREEN LEAF HEALTHCARE",
+    "date": "05 June 2024",
+    "page1": "demo3_font.jpg",
+    "page2": "demo3_back.jpg"
+  },
+  "50445566778D": {
+    "id": "50445566778D",
+    "mark": "ROYAL DINE CATERING",
+    "class": "Class 43",
+    "status": "REGISTERED",
+    "owner": "ROYAL HOSPITALITY GROUP",
+    "date": "19 August 2024",
+    "page1": "demo4_font.jpg",
+    "page2": "demo4_back.jpg"
+  },
+  "50556677889E": {
+    "id": "50556677889E",
+    "mark": "MATRIX COSMETICS",
+    "class": "Class 3",
+    "status": "REGISTERED",
+    "owner": "MATRIX BEAUTY LABS INC.",
+    "date": "11 October 2024",
+    "page1": "demo5_font.jpg",
+    "page2": "demo5_back.jpg"
+  },
+  "50667788990F": {
+    "id": "50667788990F",
+    "mark": "ALPHA LOGISTICS",
+    "class": "Class 39",
+    "status": "PENDING",
+    "owner": "ALPHA FREIGHT & SHIPPING",
+    "date": "03 February 2025",
+    "page1": "demo6_font.jpg",
+    "page2": "demo6_back.jpg"
   }
 }

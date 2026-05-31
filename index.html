@@ -77,7 +77,7 @@
                 <i class="fa-solid fa-magnifying-glass text-blue-300 text-xs"></i>
                 <span>Enter Trademark Application Number</span>
             </div>
-            <div class="p-4 sm:p-6 bg-[#F8FAFC] border-t border-gray-200 flex flex-col sm:flex-row gap-3 text-xs">
+            <div class="p-4 sm:p-6 bg-F8FAFC flex flex-col sm:flex-row gap-3 text-xs">
                 <div class="relative flex-grow">
                     <input type="text" id="searchQuery" placeholder="e.g., 402038758675Y" class="w-full border border-gray-300 rounded-sm p-3 text-sm font-mono focus:border-sgGovBlue focus:ring-1 focus:ring-sgGovBlue focus:outline-none bg-white uppercase transition-all shadow-sm">
                 </div>
@@ -100,7 +100,6 @@
                 <span>Official Registry Details</span>
             </div>
             
-            <!-- Table View Container -->
             <div class="p-4 sm:p-6 space-y-0 text-sm">
                 <div class="grid grid-cols-2 py-3.5 border-b border-gray-200 hover:bg-gray-50 transition px-2">
                     <span class="text-gray-500 font-medium text-xs sm:text-sm">Trademark Number</span>
@@ -157,7 +156,7 @@
 
     </main>
 
-    <!-- 4. REAL IPOS BLACK ISOMER FOOTER LAYOUT (LOGOS FIXED & RE-ALIGNED) -->
+    <!-- 4. REAL IPOS BLACK ISOMER FOOTER LAYOUT (INLINE SVG FIXED) -->
     <footer class="bg-[#1A1A1A] text-white text-[13px] pt-12 pb-8 border-t border-gray-800 w-full mt-auto select-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800">
@@ -197,18 +196,25 @@
                     <a href="#" class="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider block transition-colors">Contact</a>
                 </div>
                 
-                <!-- RIGHT ALIGNED LOGO PANEL (FIXED DOUBLE VIEW) -->
-                <div class="flex flex-col justify-end md:items-end gap-6 pt-4 md:pt-0">
+                <!-- RIGHT ALIGNED LOGO PANEL (INLINE SVG FIX) -->
+                <div class="flex flex-col justify-end md:items-end gap-5 pt-4 md:pt-0">
                     <div class="text-left md:text-right">
                         <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-2">Made with</span>
                         <div class="inline-flex items-center gap-1.5 bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800">
-                            <img src="https://www.isomer.gov.sg/assets/img/isomer-logo.svg" alt="Isomer Logo" class="h-3.5 w-auto object-contain brightness-0 invert">
+                            <!-- Inline Isomer Logo SVG -->
+                            <svg class="h-4 w-auto fill-current text-white" viewBox="0 0 74 18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.15 15V3h2.36l2.84 8.27L12.15 3h2.36v12h-1.84V6.14l-2.73 7.84H8.44L5.75 6.14V15H4.15zm16.03-3.04h-4.32l-.98 3.04h-1.92l4.13-12h1.94l4.13 12h-1.96l-.98-3.04zm-.5-1.55l-1.66-5.18-1.66 5.18h3.32zm11.75 4.59c-1.12 0-2.07-.37-2.84-1.11-.77-.74-1.15-1.74-1.15-3s.38-2.27 1.15-3.01c.77-.74 1.72-1.11 2.84-1.11 1.02 0 1.86.3 2.53.9l-.97 1.34c-.45-.4-.97-.61-1.56-.61-.63 0-1.15.22-1.56.66-.41.44-.61 1.05-.61 1.83s.2 1.39.61 1.83c.41.44.93.66 1.56.66.63 0 1.18-.23 1.66-.7l.9 1.25c-.66.69-1.53 1.07-2.6.11zm11.23-1.4h-4.44V9.61h3.94V8.06h-3.94V4.55h4.44V3h-6.28v12h6.28v-1.45zm11.75-10.6c1.47 0 2.6.4 3.4 1.2.8.8 1.2 1.95 1.2 3.45s-.4 2.65-1.2 3.45c-.8.8-1.93 1.2-3.4 1.2H50.1V3h4.31zm-.15 7.75c.9 0 1.56-.24 2-.72.44-.48.66-1.2.66-2.18s-.22-1.7-.66-2.18c-.44-.48-1.1-.72-2-.72H51.9v5.8h2.37zm15.42 2.85l-2.45-5.06 2.18-3.94h-1.98l-1.7 3.19-1.7-3.19h-1.98l2.18 3.94-2.45 5.06h1.93l1.54-3.32 1.54 3.32h1.93z" />
+                            </svg>
+                            <span class="text-xs font-bold text-gray-200 tracking-tight leading-none">isomer</span>
                         </div>
                     </div>
                     <div class="text-left md:text-right">
                         <span class="text-[10px] text-gray-500 block uppercase font-bold tracking-wider mb-2">Built by</span>
-                        <div class="inline-flex items-center bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800">
-                            <img src="https://www.open.gov.sg/assets/img/ogp-logo-white.svg" alt="Open Government Products Logo" class="h-4 w-auto object-contain block" onerror="this.src='https://images.squarespace-cdn.com/content/v1/61bbef1df4d9cb166946323d/b9ccbeeb-4be3-4e48-8df0-e2bcfcb2f085/OGP+Logo+White.png'">
+                        <div class="inline-flex items-center bg-neutral-900 px-3 py-2 rounded border border-neutral-800">
+                            <!-- Inline OGP Logo SVG -->
+                            <svg class="h-3.5 w-auto fill-current text-white" viewBox="0 0 140 28" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.2 24c5.7 0 9.8-4.2 9.8-10s-4.1-10-9.8-10S3.4 8.2 3.4 14s4.1 10 9.8 10zm0-3.3c-3.6 0-6.1-2.8-6.1-6.7s2.5-6.7 6.1-6.7 6.1 2.8 6.1 6.7-2.5 6.7-6.1 6.7zM27.1 23.6h3.4v-6.9c0-2.3 1.5-3.8 3.8-3.8 2.2 0 3.5 1.4 3.5 3.8v6.9h3.4V16c0-4-2.5-6.6-6.3-6.6-2.7 0-4.6 1.3-5.5 3.3V9.4h-3.3v14.2zM56.3 24c5 0 8.4-3.1 8.4-8 0-.4 0-.8-.1-1.1H50.1c.3 3 2.5 5 5.6 5 2.1 0 3.8-1 4.5-2.5l2.8.9c-1.2 2.6-3.8 4.2-7.3 4.2-5.4 0-9.1-4.1-9.1-9.9s3.6-10.2 9-10.2c5.4 0 8.6 4.1 8.6 9.9 0 .6-.1 1.2-.1 1.8H50.1c0 .1 0 .2 0 .3 0 3.5 2.6 6.1 6.2 6.1zm2.5-11.3c-.2-2.7-2.1-4.5-5.1-4.5-2.9 0-4.9 1.8-5.3 4.5h10.4zM70.3 23.6h3.4v-7.1c0-2.2 1.3-3.6 3.5-3.6.4 0 .7 0 1.1.1V9.5c-.4-.1-.8-.1-1.2-.1-2.1 0-3.9 1.2-4.7 3.2V9.4H67v14.2h3.3zm20.8.4c4.3 0 7.4-2.4 7.4-6.5V4h-3.4v4.4c-1-.9-2.5-1.5-4.4-1.5-4.3 0-7.7 3.5-7.7 8.5s3.4 8.6 8.1 8.6zm1-2.9c-2.9 0-5-2.2-5-5.6s2.1-5.6 5-5.6 5 2.2 5 5.6-2.1 5.6-5 5.6zM99.6 23.6h3.4V9.4h-3.4v14.2zm1.7-16.1c1.1 0 1.9-.8 1.9-1.9s-.8-1.9-1.9-1.9-1.9.8-1.9 1.9.8 1.9 1.9 1.9zM111.4 23.6l4.6-14.2h-3.5l-2.8 9.7-2.8-9.7h-3.5l4.6 14.2h3.4zM128 24c5 0 8.4-3.1 8.4-8 0-.4 0-.8-.1-1.1h-14.6c.3 3 2.5 5 5.6 5 2.1 0 3.8-1 4.5-2.5l2.8.9c-1.2 2.6-3.8 4.2-7.3 4.2-5.4 0-9.1-4.1-9.1-9.9s3.6-10.2 9-10.2c5.4 0 8.6 4.1 8.6 9.9 0 .6-.1 1.2-.1 1.8h-14.5c0 .1 0 .2 0 .3 0 3.5 2.6 6.1 6.2 6.1zm2.5-11.3c-.2-2.7-2.1-4.5-5.1-4.5-2.9 0-4.9 1.8-5.3 4.5h10.4z" />
+                            </svg>
                         </div>
                     </div>
                 </div>

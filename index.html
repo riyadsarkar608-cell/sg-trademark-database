@@ -129,23 +129,24 @@
                 </div>
             </div>
 
-            <!-- DOCUMENT VERIFICATION FRAME -->
-            <div class="bg-[#F8FAFC] border-t border-gray-200 p-4 sm:p-6">
-                <div class="flex items-center gap-2 text-xs font-bold text-gray-700 uppercase tracking-wide mb-4">
-                    <i class="fa-solid fa-file-shield text-sgGovRed text-base"></i>
-                    <span>Document Verification Frame (Page 1 & 2)</span>
-                </div>
-                
+            <!-- DOCUMENT IMAGE FRAME (TEXT REMOVED) -->
+            <div class="bg-white p-4 sm:p-6 border-t border-gray-100">
                 <div class="space-y-4 sm:space-y-6 flex flex-col items-center">
                     <!-- Page 1 Image Container -->
-                    <div class="bg-white p-2 border border-gray-200 shadow-md w-full max-w-xl rounded-sm transition-all hover:shadow-lg">
+                    <div class="bg-white p-2 border border-gray-200 shadow-sm w-full max-w-xl rounded-sm transition-all hover:shadow-lg">
                         <img id="certImg1" src="" alt="Certificate Page 1" class="w-full h-auto block rounded-sm">
                     </div>
                     <!-- Page 2 Image Container -->
-                    <div class="bg-white p-2 border border-gray-200 shadow-md w-full max-w-xl rounded-sm transition-all hover:shadow-lg">
+                    <div class="bg-white p-2 border border-gray-200 shadow-sm w-full max-w-xl rounded-sm transition-all hover:shadow-lg">
                         <img id="certImg2" src="" alt="Certificate Page 2" class="w-full h-auto block rounded-sm">
                     </div>
                 </div>
+            </div>
+
+            <!-- [PREMIUM VERIFIED BOX]: সার্টিফিকেটের নিচে নতুন সাকসেস মেসেজ বক্স -->
+            <div class="p-4 sm:p-5 bg-[#E8F5E9] border-t border-b border-[#C8E6C9] text-[#2E7D32] text-xs sm:text-sm font-medium flex items-start gap-2.5">
+                <span class="text-base sm:text-lg leading-none mt-0.5">✔</span>
+                <p class="leading-relaxed">This trademark certificate has been verified successfully against the national intellectual property database index.</p>
             </div>
         </div>
 
@@ -277,8 +278,6 @@
                 
                 document.getElementById('resNum').innerText = record.id;
                 document.getElementById('resName').innerText = record.mark;
-                
-                // নতুন ডাটা ডিরেক্টরি ম্যাপ (filing_date না থাকলে আগের 'date' ফিল্ড ব্যাকআপ হিসেবে কাজ করবে)
                 document.getElementById('resDate').innerText = record.filing_date || record.date;
                 document.getElementById('resClass').innerText = record.class;
                 document.getElementById('resStatus').innerText = record.status;

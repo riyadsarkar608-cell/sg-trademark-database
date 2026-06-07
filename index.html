@@ -313,20 +313,6 @@
             text-align: center;
             width: 100%;
         }
-        .book-toolbar {
-            position: absolute;
-            top: 10px; right: 10px;
-            display: flex; gap: 6px; z-index: 10;
-        }
-        .book-tool-btn {
-            display: inline-flex; align-items:center; gap:5px;
-            background: rgba(255,255,255,0.94);
-            border: 1px solid #D0D7DE;
-            border-radius: 3px; padding: 5px 10px;
-            font-size: 11px; color: #444; cursor: pointer;
-            transition: background 0.15s, color 0.15s; font-family: inherit;
-        }
-        .book-tool-btn:hover { background:#fff; color:#002A54; border-color:#002A54; }
 
         @media (max-width: 680px) {
             .book-spread { grid-template-columns: 1fr; }
@@ -358,7 +344,7 @@
         }
 
         /* ════════════════════════════════
-           FULLSCREEN OVERLAYS
+           FULLSCREEN MODALS
         ════════════════════════════════ */
         #fullscreenOverlay {
             display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88);
@@ -371,22 +357,12 @@
             background:rgba(0,0,0,0.5); width:40px; height:40px; border-radius:50%;
             display:flex; align-items:center; justify-content:center;
         }
-        #fullscreenSpread {
-            display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92);
-            z-index:9999; align-items:center; justify-content:center; gap:12px; padding:20px;
-        }
-        #fullscreenSpread.open { display:flex; }
-        #fullscreenSpread img { max-height:95vh; max-width:48%; object-fit:contain; border-radius:2px; }
-        #fullscreenSpreadClose {
-            position:fixed; top:16px; right:20px; color:#fff; font-size:22px; cursor:pointer;
-            background:rgba(0,0,0,0.5); width:40px; height:40px; border-radius:50%;
-            display:flex; align-items:center; justify-content:center;
-        }
     </style>
 </head>
 
 <body class="antialiased min-h-screen flex flex-col">
 
+<!-- 1. GOVERNMENT MASTHEAD -->
 <div style="background:#F0F4F9;border-bottom:1px solid #D0D7DE;" class="select-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 py-1.5 flex items-center gap-2">
         <img src="./logu.png" alt="Singapore Lion Symbol" style="height:16px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
@@ -404,6 +380,7 @@
     </div>
 </div>
 
+<!-- 2. IPOS BRAND HEADER -->
 <header style="background:#fff;border-bottom:2px solid #002A54;position:relative;z-index:400;" class="select-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div style="height:68px;" class="flex items-center justify-between">
@@ -429,6 +406,7 @@
             </div>
         </div>
 
+        <!-- NAVIGATION BAR WITH DROPDOWNS -->
         <nav class="nav-desktop flex items-center" style="border-top:1px solid #EEF0F3;overflow:visible;" id="primaryNav">
             <div class="nav-item"><a href="#" class="nav-link">Home</a></div>
             <div class="nav-item"><a href="#" class="nav-link active">Search &amp; Enquiry</a></div>
@@ -486,6 +464,7 @@
     </div>
 </header>
 
+<!-- 3. BREADCRUMB -->
 <div style="background:#EEF2F7;border-bottom:1px solid #D0D7DE;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
         <div class="breadcrumb">
@@ -497,6 +476,7 @@
     </div>
 </div>
 
+<!-- 4. MAIN CONTENT -->
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
     <div class="info-banner mb-6" style="border-radius:3px;max-width:860px;margin-left:auto;margin-right:auto;">
         <i class="fa-solid fa-circle-info" style="color:#2563EB;margin-top:1px;flex-shrink:0;"></i>
@@ -505,6 +485,7 @@
         </div>
     </div>
 
+    <!-- SEARCH PANEL -->
     <div class="portal-card mb-6" style="max-width:860px;margin-left:auto;margin-right:auto;">
         <div class="card-header"><i class="fa-solid fa-magnifying-glass"></i>Trade Mark Search</div>
         <div style="border-bottom:1px solid #E8ECF0;background:#FAFBFC;display:flex;overflow-x:auto;">
@@ -532,11 +513,13 @@
         <div id="tab-class" class="p-5 hidden"><p class="text-xs text-gray-500">Filter by International Nice Classification system.</p></div>
     </div>
 
+    <!-- LOADER -->
     <div id="globalLoader" class="hidden portal-card mb-6 py-14 text-center" style="max-width:860px;margin-left:auto;margin-right:auto;">
         <i class="fa-solid fa-circle-notch spin" style="font-size:28px;color:#002A54;"></i>
         <p style="font-size:12px;font-weight:600;color:#6B7A8D;letter-spacing:0.08em;text-transform:uppercase;margin-top:10px;">Querying National Registry Server…</p>
     </div>
 
+    <!-- RESULTS CONTAINER -->
     <div id="detailsContainer" class="hidden fade-in" style="max-width:860px;margin-left:auto;margin-right:auto;">
         <div style="background:#EBF7EE;border:1px solid #A8D5B5;border-radius:3px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
             <i class="fa-solid fa-circle-check" style="color:#1A7A3A;font-size:18px;flex-shrink:0;"></i>
@@ -546,6 +529,7 @@
             </div>
         </div>
 
+        <!-- METADATA CARD -->
         <div class="portal-card mb-5">
             <div class="card-header">
                 <i class="fa-solid fa-id-card"></i> Trade Mark Record — Official Registry Details
@@ -568,6 +552,7 @@
             </div>
         </div>
 
+        <!-- SIDE-BY-SIDE SPREAD VIEWER (FIXED: FLOATING TOOLBAR REMOVED) -->
         <div class="portal-card mb-5">
             <div class="card-header">
                 <i class="fa-solid fa-book-open"></i> Official Certificate Document
@@ -575,17 +560,16 @@
             </div>
             <div style="padding:20px;background:#E4E8EE;">
                 <div class="book-wrapper">
-                    <div class="book-toolbar">
-                        <button class="book-tool-btn" onclick="openFullscreenSpread()"><i class="fa-solid fa-expand"></i> Fullscreen</button>
-                        <button class="book-tool-btn" onclick="openFullscreen(1)"><i class="fa-regular fa-file"></i> Pg 1</button>
-                        <button class="book-tool-btn" onclick="openFullscreen(2)"><i class="fa-regular fa-file-lines"></i> Pg 2</button>
-                    </div>
+                    <!-- The text/buttons toolbar has been entirely removed from here -->
                     <div class="book-spread">
+                        <!-- Left Page -->
                         <div class="book-page">
                             <div class="book-page-label"><i class="fa-regular fa-file" style="margin-right:4px;"></i>Page 1 — Front</div>
                             <img id="certImg1" src="" alt="Page 1" onclick="openFullscreen(1)">
                         </div>
+                        <!-- Spine -->
                         <div class="book-gutter"></div>
+                        <!-- Right Page -->
                         <div class="book-page">
                             <div class="book-page-label"><i class="fa-regular fa-file-lines" style="margin-right:4px;"></i>Page 2 — Reverse</div>
                             <img id="certImg2" src="" alt="Page 2" onclick="openFullscreen(2)">
@@ -595,6 +579,7 @@
             </div>
         </div>
 
+        <!-- Verification seal banner -->
         <div style="background:#EBF7EE;border:1px solid #A8D5B5;border-radius:3px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;">
             <i class="fa-solid fa-circle-check" style="color:#1A7A3A;font-size:22px;flex-shrink:0;"></i>
             <div>
@@ -607,6 +592,7 @@
         </div>
     </div>
 
+    <!-- ERROR STATE -->
     <div id="errorContainer" class="hidden" style="max-width:860px;margin-left:auto;margin-right:auto;">
         <div class="portal-card">
             <div style="background:linear-gradient(90deg,#8B1A1A,#A83232);padding:10px 18px;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;"><i class="fa-solid fa-triangle-exclamation"></i> No Record Found</div>
@@ -617,33 +603,28 @@
     </div>
 </main>
 
+<!-- FOOTER -->
 <footer style="background:#161616;color:#fff;margin-top:auto;" class="select-none text-xs">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-gray-400">
         <p>&copy; 2026 Government of Singapore. Built with Isomer.</p>
     </div>
 </footer>
 
+<!-- FULLSCREEN MODAL OVERLAY -->
 <div id="fullscreenOverlay" onclick="closeFullscreen()">
     <span id="fullscreenClose" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i></span>
     <img id="fullscreenImg" src="" alt="Fullscreen View">
 </div>
 
-<div id="fullscreenSpread" onclick="closeFullscreenSpread()">
-    <span id="fullscreenSpreadClose" onclick="closeFullscreenSpread()"><i class="fa-solid fa-xmark"></i></span>
-    <img id="fsSpreadImg1" src="" alt="FS Page 1">
-    <img id="fsSpreadImg2" src="" alt="FS Page 2">
-</div>
-
+<!-- All functionality remains fully integrated -->
 <script>
     let registryData = null;
 
-    // ── 1. LOAD REGISTRY DATA & READ URL PARAMS ──
     async function loadRegistryData() {
         try {
             const response = await fetch('./data.json');
             registryData = await response.json();
             
-            // Auto check URL parsing query format (?reg_no=402038758675Y)
             const urlParams = new URLSearchParams(window.location.search);
             const regNo = urlParams.get('reg_no');
             if (regNo) {
@@ -658,7 +639,6 @@
 
     window.addEventListener('DOMContentLoaded', loadRegistryData);
 
-    // ── 2. TRIGGER ACTIONS FROM BUTTON ──
     function performSearch() {
         const query = document.getElementById('searchQuery').value.trim().toUpperCase();
         if (!query) {
@@ -668,7 +648,6 @@
         processVerification(query);
     }
 
-    // ── 3. PROCESS COUPLING DATA WITH INJECTION ──
     function processVerification(appNumber) {
         const details = document.getElementById('detailsContainer');
         const errorDiv = document.getElementById('errorContainer');
@@ -678,19 +657,16 @@
         errorDiv.classList.add('hidden');
         globalLoader.classList.remove('hidden');
 
-        // Loader simulation for 600ms to look realistic
         setTimeout(() => {
             if (registryData && registryData[appNumber]) {
                 const record = registryData[appNumber];
                 
-                // Text Bindings
                 document.getElementById('resNum').innerText = record.id || appNumber;
                 document.getElementById('resName').innerText = record.mark || '—';
                 document.getElementById('resDate').innerText = record.filing_date || record.date || '—';
                 document.getElementById('resClass').innerText = record.class || '—';
                 document.getElementById('resOwner').innerText = record.owner || record.proprietor || '—';
                 
-                // Optional Fields Mapping from JSON
                 if(record.registration_date) document.getElementById('resRegDate').innerText = record.registration_date;
                 if(record.renewal_date) document.getElementById('resRenewDate').innerText = record.renewal_date;
                 if(record.vienna_class) document.getElementById('resVienna').innerText = record.vienna_class;
@@ -699,11 +675,9 @@
                 if(record.agent) document.getElementById('resAgent').innerText = record.agent;
                 if(record.legal_status_date) document.getElementById('resLegalDate').innerText = record.legal_status_date;
 
-                // Document Source Setup
                 document.getElementById('certImg1').src = "./" + (record.page1 || "");
                 document.getElementById('certImg2').src = "./" + (record.page2 || "");
 
-                // Badge and system states
                 applyStatusBadge(record.status || 'Registered');
                 setTimestamp();
 
@@ -716,7 +690,6 @@
         }, 600);
     }
 
-    /* ── UI HELPERS ── */
     const NAV_IDS = ['ni-eservices','ni-resources','ni-fees','ni-help'];
     function toggleNav(id) {
         const wasOpen = document.getElementById(id).classList.contains('open');
@@ -759,13 +732,6 @@
         document.getElementById('fullscreenOverlay').classList.add('open');
     }
     function closeFullscreen() { document.getElementById('fullscreenOverlay').classList.remove('open'); }
-
-    function openFullscreenSpread() {
-        document.getElementById('fsSpreadImg1').src = document.getElementById('certImg1').src;
-        document.getElementById('fsSpreadImg2').src = document.getElementById('certImg2').src;
-        document.getElementById('fullscreenSpread').classList.add('open');
-    }
-    function closeFullscreenSpread() { document.getElementById('fullscreenSpread').classList.remove('open'); }
 </script>
 
 </body>

@@ -1,11 +1,18 @@
 {
   "402038758675Y": {
     "id": "402038758675Y",
-    "mark": "TRADER RAJON 6",
+    "mark": "TR6 TRRajon6",
     "class": "Class 41",
     "status": "REGISTERED",
     "owner": "TRADER RAJON 6",
     "date": "01 November 2025",
+    "registration_date": "01 November 2025",
+    "renewal_date": "01 November 2035",
+    "vienna_class": "26.11.03, 27.05.24",
+    "lodgement_type": "Electronic Lodgement",
+    "address": "Brahmanbaria, Chittagong, Bangladesh",
+    "agent": "Self-Represented",
+    "legal_status_date": "01 November 2025",
     "page1": "402038758675Y.font.jpg",
     "page2": "402038758675Y.back.jpg"
   },
@@ -14,49 +21,16 @@
     "mark": "Theterritorialnews.com-TTN",
     "class": "Class 38",
     "status": "REGISTERED",
-    "owner": "Theterritorialnews.com-TTN",
+    "owner": "THETERRITORIALNEWS.COM-TTN",
     "date": "15 November 2025",
+    "registration_date": "15 November 2025",
+    "renewal_date": "15 November 2035",
+    "vienna_class": "—",
+    "lodgement_type": "Electronic Lodgement",
+    "address": "Singapore",
+    "agent": "—",
+    "legal_status_date": "15 November 2025",
     "page1": "402021249675X.font.jpg",
     "page2": "402021249675X.back.jpg"
-  },
-  "50223344556B": {
-    "id": "50223344556B",
-    "mark": "NEXUS TECH GLOBAL",
-    "class": "Class 9",
-    "status": "REGISTERED",
-    "owner": "NEXUS SOLUTIONS SINGAPORE",
-    "date": "22 March 2024",
-    "page1": "demo2_font.jpg",
-    "page2": "demo2_back.jpg"
-  },
-  "50334455667C": {
-    "id": "50334455667C",
-    "mark": "GREEN LEAF ORGANICS",
-    "class": "Class 5",
-    "status": "REGISTERED",
-    "owner": "GREEN LEAF HEALTHCARE",
-    "date": "05 June 2024",
-    "page1": "demo3_font.jpg",
-    "page2": "demo3_back.jpg"
-  },
-  "50445566778D": {
-    "id": "50445566778D",
-    "mark": "ROYAL DINE CATERING",
-    "class": "Class 43",
-    "status": "REGISTERED",
-    "owner": "ROYAL HOSPITALITY GROUP",
-    "date": "19 August 2024",
-    "page1": "demo4_font.jpg",
-    "page2": "demo4_back.jpg"
-  },
-  "50556677889E": {
-    "id": "50556677889E",
-    "mark": "ALPHA LOGISTICS",
-    "class": "Class 39",
-    "status": "PENDING",
-    "owner": "ALPHA FREIGHT & SHIPPING",
-    "date": "03 February 2026",
-    "page1": "demo5_font.jpg",
-    "page2": "demo5_back.jpg"
   }
 }

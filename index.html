@@ -278,7 +278,7 @@
             overflow: hidden;
         }
         .book-page {
-            padding: 12px;
+            padding: 16px; /* Optimized padding for a cleaner border alignment */
             background: #fff;
             display: flex;
             flex-direction: column;
@@ -302,16 +302,6 @@
             position: absolute;
             top: 0; bottom: 0; left: 50%; width: 1px;
             background: rgba(0,0,0,0.08);
-        }
-        .book-page-label {
-            font-size: 9.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #8A96A8;
-            padding: 5px 0 8px;
-            text-align: center;
-            width: 100%;
         }
 
         @media (max-width: 680px) {
@@ -552,7 +542,7 @@
             </div>
         </div>
 
-        <!-- SIDE-BY-SIDE SPREAD VIEWER (FIXED: FLOATING TOOLBAR REMOVED) -->
+        <!-- SIDE-BY-SIDE SPREAD VIEWER (FIXED: PAGE LABELS/TEXT REMOVED COMPLETELY) -->
         <div class="portal-card mb-5">
             <div class="card-header">
                 <i class="fa-solid fa-book-open"></i> Official Certificate Document
@@ -560,19 +550,16 @@
             </div>
             <div style="padding:20px;background:#E4E8EE;">
                 <div class="book-wrapper">
-                    <!-- The text/buttons toolbar has been entirely removed from here -->
                     <div class="book-spread">
                         <!-- Left Page -->
                         <div class="book-page">
-                            <div class="book-page-label"><i class="fa-regular fa-file" style="margin-right:4px;"></i>Page 1 — Front</div>
-                            <img id="certImg1" src="" alt="Page 1" onclick="openFullscreen(1)">
+                            <img id="certImg1" src="" alt="Certificate Page 1" onclick="openFullscreen(1)">
                         </div>
                         <!-- Spine -->
                         <div class="book-gutter"></div>
                         <!-- Right Page -->
                         <div class="book-page">
-                            <div class="book-page-label"><i class="fa-regular fa-file-lines" style="margin-right:4px;"></i>Page 2 — Reverse</div>
-                            <img id="certImg2" src="" alt="Page 2" onclick="openFullscreen(2)">
+                            <img id="certImg2" src="" alt="Certificate Page 2" onclick="openFullscreen(2)">
                         </div>
                     </div>
                 </div>
@@ -616,7 +603,6 @@
     <img id="fullscreenImg" src="" alt="Fullscreen View">
 </div>
 
-<!-- All functionality remains fully integrated -->
 <script>
     let registryData = null;
 

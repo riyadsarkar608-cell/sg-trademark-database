@@ -112,12 +112,11 @@
         }
         .nav-item.open > .nav-dropdown { display: block; }
 
-        /* Mega menu (wider, multi-column) */
+        /* Mega menu */
         .nav-mega {
             left: 0;
             min-width: 560px;
         }
-        /* Mega menu that would overflow right edge */
         .nav-item:nth-last-child(-n+2) > .nav-mega {
             left: auto;
             right: 0;
@@ -165,7 +164,6 @@
         .dropdown-link:hover .dl-arr { opacity: 1; }
         .dropdown-divider { height: 1px; background: #EEF0F4; margin: 4px 0; }
 
-        /* Mega grid */
         .mega-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -189,9 +187,7 @@
             letter-spacing: 0.03em;
             text-transform: uppercase;
             background: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
+            border-top: none; border-left: none; border-right: none;
         }
         .search-tab.active  { color:#002A54; border-bottom-color:#EF4A24; }
         .search-tab:hover:not(.active) { color:#002A54; }
@@ -256,7 +252,6 @@
             letter-spacing:0.05em;
         }
 
-        /* ── Input focus ── */
         .ipos-input:focus {
             outline:none;
             border-color:#002A54;
@@ -279,9 +274,7 @@
             background: #fff;
             border: 1px solid #C8CDD6;
             border-radius: 3px;
-            box-shadow:
-                0 2px 8px rgba(0,0,0,0.10),
-                inset 0 0 0 1px rgba(255,255,255,0.6);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10), inset 0 0 0 1px rgba(255,255,255,0.6);
             overflow: hidden;
         }
         .book-page {
@@ -301,25 +294,15 @@
             cursor: zoom-in;
         }
         .book-gutter {
-            background: linear-gradient(to right,
-                #C4C8CF 0%,
-                #DEE1E6 30%,
-                #E8EAED 50%,
-                #DEE1E6 70%,
-                #C4C8CF 100%
-            );
+            background: linear-gradient(to right, #C4C8CF 0%, #DEE1E6 30%, #E8EAED 50%, #DEE1E6 70%, #C4C8CF 100%);
             position: relative;
         }
         .book-gutter::before {
             content: '';
             position: absolute;
-            top: 0; bottom: 0;
-            left: 50%;
-            width: 1px;
+            top: 0; bottom: 0; left: 50%; width: 1px;
             background: rgba(0,0,0,0.08);
         }
-
-        /* Page label strip */
         .book-page-label {
             font-size: 9.5px;
             font-weight: 700;
@@ -330,154 +313,86 @@
             text-align: center;
             width: 100%;
         }
-
-        /* Floating toolbar over the book */
         .book-toolbar {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 6px;
-            z-index: 10;
+            top: 10px; right: 10px;
+            display: flex; gap: 6px; z-index: 10;
         }
         .book-tool-btn {
             display: inline-flex; align-items:center; gap:5px;
             background: rgba(255,255,255,0.94);
             border: 1px solid #D0D7DE;
-            border-radius: 3px;
-            padding: 5px 10px;
-            font-size: 11px;
-            color: #444;
-            cursor: pointer;
-            transition: background 0.15s, color 0.15s;
-            font-family: inherit;
+            border-radius: 3px; padding: 5px 10px;
+            font-size: 11px; color: #444; cursor: pointer;
+            transition: background 0.15s, color 0.15s; font-family: inherit;
         }
         .book-tool-btn:hover { background:#fff; color:#002A54; border-color:#002A54; }
 
-        /* Mobile: stack pages vertically */
         @media (max-width: 680px) {
-            .book-spread {
-                grid-template-columns: 1fr;
-            }
-            .book-gutter {
-                height: 3px;
-                width: 100%;
-            }
-            .book-gutter::before {
-                top: 50%; bottom: auto;
-                left: 0; right: 0;
-                width: 100%; height: 1px;
-            }
+            .book-spread { grid-template-columns: 1fr; }
+            .book-gutter { height: 3px; width: 100%; }
+            .book-gutter::before { top: 50%; bottom: auto; left: 0; right: 0; width: 100%; height: 1px; }
             .meta-row { grid-template-columns: 1fr; }
             .meta-label { border-right:none; border-bottom:1px solid #E8ECF0; padding-bottom:6px; }
             .meta-value { padding-top:6px; }
             .nav-desktop { display:none !important; }
         }
 
-        /* ── Portal card ── */
         .portal-card {
-            background: #fff;
-            border: 1px solid #D0D7DE;
-            border-radius: 3px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            background: #fff; border: 1px solid #D0D7DE; border-radius: 3px;
+            overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .card-header {
             background: linear-gradient(90deg,#002A54 0%,#0A417A 100%);
-            color: #fff;
-            padding: 10px 18px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #fff; padding: 10px 18px; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            display: flex; align-items: center; gap: 8px;
         }
-
-        /* ── Breadcrumb ── */
         .breadcrumb { font-size:11.5px; color:#6B7A8D; }
         .breadcrumb a { color:#2563EB; text-decoration:none; }
         .breadcrumb a:hover { text-decoration:underline; }
         .breadcrumb span { margin:0 5px; color:#B0BAC9; }
-
-        /* ── Info banner ── */
         .info-banner {
-            background:#EBF3FF;
-            border-left:3px solid #2563EB;
-            padding:8px 14px;
-            font-size:11.5px;
-            color:#1E3A5F;
-            display:flex; align-items:flex-start; gap:8px;
+            background:#EBF3FF; border-left:3px solid #2563EB; padding:8px 14px;
+            font-size:11.5px; color:#1E3A5F; display:flex; align-items:flex-start; gap:8px;
         }
 
         /* ════════════════════════════════
-           FULLSCREEN OVERLAY
+           FULLSCREEN OVERLAYS
         ════════════════════════════════ */
         #fullscreenOverlay {
-            display:none;
-            position:fixed; inset:0;
-            background:rgba(0,0,0,0.88);
-            z-index:9999;
-            align-items:center; justify-content:center;
-            padding:20px;
+            display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88);
+            z-index:9999; align-items:center; justify-content:center; padding:20px;
         }
         #fullscreenOverlay.open { display:flex; }
-        #fullscreenOverlay img {
-            max-width:100%; max-height:90vh;
-            object-fit:contain; border-radius:3px;
-            box-shadow:0 8px 40px rgba(0,0,0,0.6);
-        }
+        #fullscreenOverlay img { max-width:100%; max-height:90vh; object-fit:contain; border-radius:3px; }
         #fullscreenClose {
-            position:fixed; top:16px; right:20px;
-            color:#fff; font-size:26px; cursor:pointer; line-height:1;
-            background:rgba(0,0,0,0.5); width:40px; height:40px;
-            border-radius:50%; display:flex; align-items:center; justify-content:center;
-            transition:background 0.15s;
+            position:fixed; top:16px; right:20px; color:#fff; font-size:26px; cursor:pointer;
+            background:rgba(0,0,0,0.5); width:40px; height:40px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
         }
-        #fullscreenClose:hover { background:rgba(255,255,255,0.2); }
-
-        /* fullscreen spread: show both pages side-by-side */
         #fullscreenSpread {
-            display:none;
-            position:fixed; inset:0;
-            background:rgba(0,0,0,0.92);
-            z-index:9999;
-            align-items:center; justify-content:center;
-            gap:4px;
-            padding:20px;
+            display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92);
+            z-index:9999; align-items:center; justify-content:center; gap:12px; padding:20px;
         }
         #fullscreenSpread.open { display:flex; }
-        #fullscreenSpread img {
-            max-height:90vh;
-            max-width:48%;
-            object-fit:contain; border-radius:2px;
-            box-shadow:0 4px 24px rgba(0,0,0,0.5);
-        }
+        #fullscreenSpread img { max-height:95vh; max-width:48%; object-fit:contain; border-radius:2px; }
         #fullscreenSpreadClose {
-            position:fixed; top:16px; right:20px;
-            color:#fff; font-size:22px; cursor:pointer;
-            background:rgba(0,0,0,0.5); width:40px; height:40px;
-            border-radius:50%; display:flex; align-items:center; justify-content:center;
-            transition:background 0.15s;
+            position:fixed; top:16px; right:20px; color:#fff; font-size:22px; cursor:pointer;
+            background:rgba(0,0,0,0.5); width:40px; height:40px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
         }
-        #fullscreenSpreadClose:hover { background:rgba(255,255,255,0.2); }
     </style>
 </head>
 
 <body class="antialiased min-h-screen flex flex-col">
 
-<!-- ═══════════════════════════════════
-     1. GOVERNMENT MASTHEAD
-═══════════════════════════════════ -->
 <div style="background:#F0F4F9;border-bottom:1px solid #D0D7DE;" class="select-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 py-1.5 flex items-center gap-2">
-        <img src="./logu.png" alt="Singapore Lion Symbol" style="height:16px;"
-             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
+        <img src="./logu.png" alt="Singapore Lion Symbol" style="height:16px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
         <span style="font-size:11px;color:#444;font-weight:600;">A Singapore Government Agency Website</span>
         <span style="color:#B0BAC9;font-size:11px;margin:0 4px;">|</span>
-        <button onclick="document.getElementById('howToIdentify').classList.toggle('hidden')"
-                style="font-size:11px;color:#2563EB;background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:3px;">
+        <button onclick="document.getElementById('howToIdentify').classList.toggle('hidden')" style="font-size:11px;color:#2563EB;background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:3px;">
             How to identify <i class="fa-solid fa-chevron-down" style="font-size:8px;"></i>
         </button>
     </div>
@@ -489,13 +404,8 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════
-     2. IPOS BRAND HEADER
-═══════════════════════════════════ -->
 <header style="background:#fff;border-bottom:2px solid #002A54;position:relative;z-index:400;" class="select-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Logo + Singpass row -->
         <div style="height:68px;" class="flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <a href="#" class="flex items-center gap-3 no-underline">
@@ -514,138 +424,80 @@
             </div>
             <div class="flex items-center gap-3">
                 <a href="https://login.id.singpass.gov.sg/main" target="_blank" class="singpass-btn">
-                    <span class="singpass-logo">SP</span>
-                    Login with Singpass
+                    <span class="singpass-logo">SP</span>Login with Singpass
                 </a>
             </div>
         </div>
 
-        <!-- ══ PRIMARY NAV WITH DROPDOWNS ══ -->
         <nav class="nav-desktop flex items-center" style="border-top:1px solid #EEF0F3;overflow:visible;" id="primaryNav">
-
-            <!-- Home (no dropdown) -->
-            <div class="nav-item">
-                <a href="#" class="nav-link">Home</a>
-            </div>
-
-            <!-- Search & Enquiry (active, no dropdown) -->
-            <div class="nav-item">
-                <a href="#" class="nav-link active">Search &amp; Enquiry</a>
-            </div>
-
-            <!-- eServices dropdown -->
+            <div class="nav-item"><a href="#" class="nav-link">Home</a></div>
+            <div class="nav-item"><a href="#" class="nav-link active">Search &amp; Enquiry</a></div>
+            
             <div class="nav-item" id="ni-eservices">
-                <div class="nav-link" onclick="toggleNav('ni-eservices')">
-                    eServices <i class="fa-solid fa-chevron-down chevron"></i>
-                </div>
+                <div class="nav-link" onclick="toggleNav('ni-eservices')">eServices <i class="fa-solid fa-chevron-down chevron"></i></div>
                 <div class="nav-dropdown" style="min-width:260px;">
                     <div class="dropdown-section-head">Trade Marks</div>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-pen-to-square"></i></span><span class="dl-label">Apply for a Trade Mark</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-rotate"></i></span><span class="dl-label">Renew a Trade Mark</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-database"></i></span><span class="dl-label">Search Trade Mark Register</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-file-signature"></i></span><span class="dl-label">Oppose / Invalidate a Mark</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <div class="dropdown-section-head">General</div>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-gears"></i></span><span class="dl-label">Maintain IP</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-receipt"></i></span><span class="dl-label">Pay Fees Online</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-pen-to-square"></i></span><span class="dl-label">Apply for a Trade Mark</span></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-rotate"></i></span><span class="dl-label">Renew a Trade Mark</span></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-database"></i></span><span class="dl-label">Search Trade Mark Register</span></a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-link" style="color:#0A417A;font-weight:600;"><span class="dl-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span><span class="dl-label">Go to IPOS Digital Hub</span></a>
                 </div>
             </div>
 
-            <!-- IP Resources mega menu -->
             <div class="nav-item" id="ni-resources">
-                <div class="nav-link" onclick="toggleNav('ni-resources')">
-                    IP Resources <i class="fa-solid fa-chevron-down chevron"></i>
-                </div>
+                <div class="nav-link" onclick="toggleNav('ni-resources')">IP Resources <i class="fa-solid fa-chevron-down chevron"></i></div>
                 <div class="nav-dropdown nav-mega" style="min-width:580px;">
                     <div class="mega-grid">
                         <div class="mega-col">
                             <div class="dropdown-section-head">Legislation</div>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="dl-label">Trade Marks Act</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="dl-label">Patents Act</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="dl-label">Copyright Act 2021</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="dl-label">Registered Designs Act</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-file-contract"></i></span><span class="dl-label">IP Rules &amp; Regulations</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
+                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="dl-label">Trade Marks Act</span></a>
+                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="dl-label">Patents Act</span></a>
                         </div>
                         <div class="mega-col">
                             <div class="dropdown-section-head">Guidance</div>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-book-open"></i></span><span class="dl-label">Examination Guidelines</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-bookmark"></i></span><span class="dl-label">Case Decisions</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-circle-question"></i></span><span class="dl-label">FAQs</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-graduation-cap"></i></span><span class="dl-label">IP Academy</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-chart-bar"></i></span><span class="dl-label">IP Statistics</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
+                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-book-open"></i></span><span class="dl-label">Examination Guidelines</span></a>
+                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-circle-question"></i></span><span class="dl-label">FAQs</span></a>
                         </div>
                         <div class="mega-col">
                             <div class="dropdown-section-head">International</div>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-globe"></i></span><span class="dl-label">Madrid System (Marks)</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-globe"></i></span><span class="dl-label">PCT (Patents)</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-handshake"></i></span><span class="dl-label">ASEAN IP Portal</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-building-columns"></i></span><span class="dl-label">WIPO Resources</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
+                            <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-globe"></i></span><span class="dl-label">Madrid System</span></a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Fees & Forms dropdown -->
             <div class="nav-item" id="ni-fees">
-                <div class="nav-link" onclick="toggleNav('ni-fees')">
-                    Fees &amp; Forms <i class="fa-solid fa-chevron-down chevron"></i>
-                </div>
+                <div class="nav-link" onclick="toggleNav('ni-fees')">Fees &amp; Forms <i class="fa-solid fa-chevron-down chevron"></i></div>
                 <div class="nav-dropdown" style="min-width:240px;">
-                    <div class="dropdown-section-head">Trade Mark Fees</div>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-dollar-sign"></i></span><span class="dl-label">Application Fees</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-dollar-sign"></i></span><span class="dl-label">Renewal Fees</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-dollar-sign"></i></span><span class="dl-label">Miscellaneous Fees</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <div class="dropdown-section-head">Forms</div>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-file-pdf"></i></span><span class="dl-label">TM Form 1 – Application</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-file-pdf"></i></span><span class="dl-label">TM Form 12 – Renewal</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-file-pdf"></i></span><span class="dl-label">All TM Forms</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-dollar-sign"></i></span><span class="dl-label">Application Fees</span></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-file-pdf"></i></span><span class="dl-label">All TM Forms</span></a>
                 </div>
             </div>
 
-            <!-- Help & Support dropdown -->
             <div class="nav-item" id="ni-help">
-                <div class="nav-link" onclick="toggleNav('ni-help')">
-                    Help &amp; Support <i class="fa-solid fa-chevron-down chevron"></i>
-                </div>
+                <div class="nav-link" onclick="toggleNav('ni-help')">Help &amp; Support <i class="fa-solid fa-chevron-down chevron"></i></div>
                 <div class="nav-dropdown" style="min-width:230px;right:0;left:auto;">
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-circle-question"></i></span><span class="dl-label">FAQs</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-phone"></i></span><span class="dl-label">Contact IPOS</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-calendar-days"></i></span><span class="dl-label">Book an Appointment</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-comment-dots"></i></span><span class="dl-label">Live Chat Support</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-map-location-dot"></i></span><span class="dl-label">Visit Us (51 Bras Basah Rd)</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
-                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-shield-halved"></i></span><span class="dl-label">Report Vulnerability</span><i class="fa-solid fa-chevron-right dl-arr"></i></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-phone"></i></span><span class="dl-label">Contact IPOS</span></a>
+                    <a href="#" class="dropdown-link"><span class="dl-icon"><i class="fa-solid fa-comment-dots"></i></span><span class="dl-label">Live Chat Support</span></a>
                 </div>
             </div>
-
         </nav>
     </div>
 </header>
 
-<!-- ═══════════════════════════════════
-     3. BREADCRUMB + CONTEXT STRIP
-═══════════════════════════════════ -->
 <div style="background:#EEF2F7;border-bottom:1px solid #D0D7DE;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
         <div class="breadcrumb">
-            <a href="#">Home</a><span>›</span>
-            <a href="#">Search &amp; Enquiry</a><span>›</span>
-            <strong style="color:#002A54;">Trade Mark Verification</strong>
+            <a href="#">Home</a><span>›</span><a href="#">Search &amp; Enquiry</a><span>›</span><strong style="color:#002A54;">Trade Mark Verification</strong>
         </div>
         <div style="font-size:11px;color:#6B7A8D;">
-            <i class="fa-solid fa-database" style="margin-right:5px;"></i>
-            Registry last updated: <strong>07 Jun 2026, 06:00 SGT</strong>
+            <i class="fa-solid fa-database" style="margin-right:5px;"></i>Registry last updated: <strong>07 Jun 2026, 06:00 SGT</strong>
         </div>
     </div>
 </div>
 
-<!-- ═══════════════════════════════════
-     4. MAIN CONTENT
-═══════════════════════════════════ -->
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
-
-    <!-- Info banner -->
     <div class="info-banner mb-6" style="border-radius:3px;max-width:860px;margin-left:auto;margin-right:auto;">
         <i class="fa-solid fa-circle-info" style="color:#2563EB;margin-top:1px;flex-shrink:0;"></i>
         <div>
@@ -653,13 +505,8 @@
         </div>
     </div>
 
-    <!-- ── SEARCH PANEL ── -->
     <div class="portal-card mb-6" style="max-width:860px;margin-left:auto;margin-right:auto;">
-        <div class="card-header">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            Trade Mark Search
-        </div>
-        <!-- Search tabs -->
+        <div class="card-header"><i class="fa-solid fa-magnifying-glass"></i>Trade Mark Search</div>
         <div style="border-bottom:1px solid #E8ECF0;background:#FAFBFC;display:flex;overflow-x:auto;">
             <button class="search-tab active" onclick="switchTab(this,'tab-appno')">Application No.</button>
             <button class="search-tab" onclick="switchTab(this,'tab-mark')">Trade Mark Name</button>
@@ -670,12 +517,8 @@
         <div id="tab-appno" class="p-5">
             <label style="font-size:11px;font-weight:700;color:#6B7A8D;text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:6px;">Application / Registration Number</label>
             <div class="flex gap-3 flex-col sm:flex-row">
-                <input type="text" id="searchQuery" class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5 mono"
-                       style="font-size:14px;background:#fff;text-transform:uppercase;"
-                       placeholder="e.g. 402038758675Y"
-                       onkeydown="if(event.key==='Enter') performSearch()">
-                <button onclick="performSearch()"
-                        style="background:linear-gradient(135deg,#002A54,#0A417A);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:10px 28px;border-radius:2px;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;flex-shrink:0;">
+                <input type="text" id="searchQuery" class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5 mono" style="font-size:14px;background:#fff;text-transform:uppercase;" placeholder="e.g. 402038758675Y" onkeydown="if(event.key==='Enter') performSearch()">
+                <button onclick="performSearch()" style="background:linear-gradient(135deg,#002A54,#0A417A);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:10px 28px;border-radius:2px;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;flex-shrink:0;">
                     <i class="fa-solid fa-search" style="font-size:11px;"></i> Search Register
                 </button>
             </div>
@@ -684,424 +527,246 @@
             </p>
         </div>
 
-        <div id="tab-mark" class="p-5 hidden">
-            <label style="font-size:11px;font-weight:700;color:#6B7A8D;text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:6px;">Trade Mark Name / Word Mark</label>
-            <div class="flex gap-3 flex-col sm:flex-row">
-                <input type="text" class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5" style="font-size:14px;background:#fff;" placeholder="e.g. SUPER BRAND">
-                <button style="background:#002A54;color:#fff;font-size:12px;font-weight:700;padding:10px 28px;border-radius:2px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;">Search Register</button>
-            </div>
-            <p style="font-size:11px;color:#8A96A8;margin-top:8px;">Use % as a wildcard. Searches are case-insensitive.</p>
-        </div>
-
-        <div id="tab-owner" class="p-5 hidden">
-            <label style="font-size:11px;font-weight:700;color:#6B7A8D;text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:6px;">Owner / Applicant Name</label>
-            <div class="flex gap-3 flex-col sm:flex-row">
-                <input type="text" class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5" style="font-size:14px;background:#fff;" placeholder="e.g. Pte Ltd, Corp, Limited">
-                <button style="background:#002A54;color:#fff;font-size:12px;font-weight:700;padding:10px 28px;border-radius:2px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;">Search Register</button>
-            </div>
-        </div>
-
-        <div id="tab-class" class="p-5 hidden">
-            <label style="font-size:11px;font-weight:700;color:#6B7A8D;text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:6px;">Nice Classification Class No.</label>
-            <div class="flex gap-3 flex-col sm:flex-row">
-                <select class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5 bg-white" style="font-size:14px;">
-                    <option>— Select Class —</option>
-                    <option>Class 01 – Chemicals</option>
-                    <option>Class 09 – Scientific &amp; Electrical Apparatus</option>
-                    <option>Class 25 – Clothing, Footwear, Headgear</option>
-                    <option>Class 35 – Advertising &amp; Business Management</option>
-                    <option>Class 36 – Insurance &amp; Financial Services</option>
-                    <option>Class 42 – Scientific &amp; Technology Services</option>
-                    <option>Class 44 – Medical &amp; Beauty Services</option>
-                </select>
-                <button style="background:#002A54;color:#fff;font-size:12px;font-weight:700;padding:10px 28px;border-radius:2px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;">Search Register</button>
-            </div>
-        </div>
+        <div id="tab-mark" class="p-5 hidden"><p class="text-xs text-gray-500">Search by Trade Mark Word Mark description feature.</p></div>
+        <div id="tab-owner" class="p-5 hidden"><p class="text-xs text-gray-500">Search by Proprietor/Owner company name description.</p></div>
+        <div id="tab-class" class="p-5 hidden"><p class="text-xs text-gray-500">Filter by International Nice Classification system.</p></div>
     </div>
 
-    <!-- ── LOADER ── -->
     <div id="globalLoader" class="hidden portal-card mb-6 py-14 text-center" style="max-width:860px;margin-left:auto;margin-right:auto;">
         <i class="fa-solid fa-circle-notch spin" style="font-size:28px;color:#002A54;"></i>
         <p style="font-size:12px;font-weight:600;color:#6B7A8D;letter-spacing:0.08em;text-transform:uppercase;margin-top:10px;">Querying National Registry Server…</p>
-        <p style="font-size:11px;color:#AAB4C0;margin-top:4px;">Please wait. Connecting to IPOS Digital Hub database.</p>
     </div>
 
-    <!-- ══════════════════════════════════
-         RESULTS CONTAINER
-    ══════════════════════════════════ -->
     <div id="detailsContainer" class="hidden fade-in" style="max-width:860px;margin-left:auto;margin-right:auto;">
-
-        <!-- Verified banner -->
         <div style="background:#EBF7EE;border:1px solid #A8D5B5;border-radius:3px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
             <i class="fa-solid fa-circle-check" style="color:#1A7A3A;font-size:18px;flex-shrink:0;"></i>
             <div>
                 <div style="font-size:13px;font-weight:700;color:#1A5C2C;">Record Found — Verified Against National Register</div>
-                <div style="font-size:11px;color:#3A7A50;margin-top:1px;">This record has been verified against the official Singapore Trade Marks Register maintained by IPOS.</div>
+                <div style="font-size:11px;color:#3A7A50;margin-top:1px;">This record has been verified against the official register.</div>
             </div>
         </div>
 
-        <!-- ── METADATA CARD ── -->
         <div class="portal-card mb-5">
             <div class="card-header">
-                <i class="fa-solid fa-id-card"></i>
-                Trade Mark Record — Official Registry Details
-                <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
-                    <span id="resBadge" class="badge badge-registered"><span class="badge-dot"></span><span id="resStatusText"></span></span>
-                </div>
+                <i class="fa-solid fa-id-card"></i> Trade Mark Record — Official Registry Details
+                <div style="margin-left:auto;"><span id="resBadge" class="badge"><span class="badge-dot"></span><span id="resStatusText"></span></span></div>
             </div>
             <div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-hashtag" style="margin-right:6px;color:#B0BAC9;"></i>Application No.</div>
-                    <div class="meta-value mono" id="resNum" style="font-size:14px;font-weight:600;color:#002A54;letter-spacing:0.04em;"></div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-trademark" style="margin-right:6px;color:#B0BAC9;"></i>Trade Mark</div>
-                    <div class="meta-value" id="resName" style="font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:0.04em;"></div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-regular fa-calendar" style="margin-right:6px;color:#B0BAC9;"></i>Filing Date</div>
-                    <div class="meta-value" id="resDate"></div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-calendar-check" style="margin-right:6px;color:#B0BAC9;"></i>Registration Date</div>
-                    <div class="meta-value" id="resRegDate">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-rotate" style="margin-right:6px;color:#B0BAC9;"></i>Renewal Date</div>
-                    <div class="meta-value" id="resRenewDate">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-tag" style="margin-right:6px;color:#B0BAC9;"></i>Nice Classification</div>
-                    <div class="meta-value" id="resClass"></div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-layer-group" style="margin-right:6px;color:#B0BAC9;"></i>Vienna Class</div>
-                    <div class="meta-value" id="resVienna">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-file-pen" style="margin-right:6px;color:#B0BAC9;"></i>Lodgement Type</div>
-                    <div class="meta-value" id="resLodgement">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-building" style="margin-right:6px;color:#B0BAC9;"></i>Registered Proprietor</div>
-                    <div class="meta-value" id="resOwner" style="font-weight:600;"></div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-map-pin" style="margin-right:6px;color:#B0BAC9;"></i>Proprietor Address</div>
-                    <div class="meta-value" id="resAddress">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-user-tie" style="margin-right:6px;color:#B0BAC9;"></i>Agent / Representative</div>
-                    <div class="meta-value" id="resAgent">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-scale-balanced" style="margin-right:6px;color:#B0BAC9;"></i>Legal Status Date</div>
-                    <div class="meta-value" id="resLegalDate">—</div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-label"><i class="fa-solid fa-shield-halved" style="margin-right:6px;color:#B0BAC9;"></i>Authority</div>
-                    <div class="meta-value" style="color:#002A54;font-weight:600;">Intellectual Property Office of Singapore (IPOS)</div>
-                </div>
+                <div class="meta-row"><div class="meta-label">Application No.</div><div class="meta-value mono" id="resNum" style="color:#002A54;font-weight:600;"></div></div>
+                <div class="meta-row"><div class="meta-label">Trade Mark</div><div class="meta-value font-bold" id="resName"></div></div>
+                <div class="meta-row"><div class="meta-label">Filing Date</div><div class="meta-value" id="resDate"></div></div>
+                <div class="meta-row"><div class="meta-label">Registration Date</div><div class="meta-value" id="resRegDate">—</div></div>
+                <div class="meta-row"><div class="meta-label">Renewal Date</div><div class="meta-value" id="resRenewDate">—</div></div>
+                <div class="meta-row"><div class="meta-label">Nice Classification</div><div class="meta-value" id="resClass"></div></div>
+                <div class="meta-row"><div class="meta-label">Vienna Class</div><div class="meta-value" id="resVienna">—</div></div>
+                <div class="meta-row"><div class="meta-label">Lodgement Type</div><div class="meta-value" id="resLodgement">—</div></div>
+                <div class="meta-row"><div class="meta-label">Registered Proprietor</div><div class="meta-value" id="resOwner"></div></div>
+                <div class="meta-row"><div class="meta-label">Proprietor Address</div><div class="meta-value" id="resAddress">—</div></div>
+                <div class="meta-row"><div class="meta-label">Agent / Representative</div><div class="meta-value" id="resAgent">—</div></div>
+                <div class="meta-row"><div class="meta-label">Legal Status Date</div><div class="meta-value" id="resLegalDate">—</div></div>
+                <div class="meta-row"><div class="meta-label">Authority</div><div class="meta-value" style="color:#002A54;font-weight:600;">Intellectual Property Office of Singapore (IPOS)</div></div>
             </div>
         </div>
 
-        <!-- ══════════════════════════════════
-             OPEN-BOOK DOCUMENT VIEWER
-        ══════════════════════════════════ -->
         <div class="portal-card mb-5">
             <div class="card-header">
-                <i class="fa-solid fa-book-open"></i>
-                Official Certificate Document
-                <span style="margin-left:auto;font-size:10px;font-weight:400;opacity:0.75;letter-spacing:0.03em;">IPOS Digitally Issued Certificate</span>
+                <i class="fa-solid fa-book-open"></i> Official Certificate Document
+                <span style="margin-left:auto;font-size:10px;font-weight:400;opacity:0.75;">IPOS Digitally Issued Certificate</span>
             </div>
-
-            <!-- Document viewer body -->
             <div style="padding:20px;background:#E4E8EE;">
                 <div class="book-wrapper">
-
-                    <!-- Floating toolbar -->
                     <div class="book-toolbar">
-                        <button class="book-tool-btn" onclick="openFullscreenSpread()" title="View both pages fullscreen">
-                            <i class="fa-solid fa-expand"></i> Fullscreen
-                        </button>
-                        <button class="book-tool-btn" onclick="openFullscreen(1)" title="View Page 1 only">
-                            <i class="fa-regular fa-file"></i> Pg 1
-                        </button>
-                        <button class="book-tool-btn" onclick="openFullscreen(2)" title="View Page 2 only">
-                            <i class="fa-regular fa-file-lines"></i> Pg 2
-                        </button>
+                        <button class="book-tool-btn" onclick="openFullscreenSpread()"><i class="fa-solid fa-expand"></i> Fullscreen</button>
+                        <button class="book-tool-btn" onclick="openFullscreen(1)"><i class="fa-regular fa-file"></i> Pg 1</button>
+                        <button class="book-tool-btn" onclick="openFullscreen(2)"><i class="fa-regular fa-file-lines"></i> Pg 2</button>
                     </div>
-
-                    <!-- The spread -->
                     <div class="book-spread">
-                        <!-- Left page -->
                         <div class="book-page">
-                            <div class="book-page-label">
-                                <i class="fa-regular fa-file" style="margin-right:4px;"></i>Page 1 — Front
-                            </div>
-                            <img id="certImg1" src="" alt="Trade Mark Certificate — Page 1 (Front)"
-                                 onclick="openFullscreen(1)"
-                                 title="Click to enlarge">
+                            <div class="book-page-label"><i class="fa-regular fa-file" style="margin-right:4px;"></i>Page 1 — Front</div>
+                            <img id="certImg1" src="" alt="Page 1" onclick="openFullscreen(1)">
                         </div>
-
-                        <!-- Spine / Gutter -->
                         <div class="book-gutter"></div>
-
-                        <!-- Right page -->
                         <div class="book-page">
-                            <div class="book-page-label">
-                                <i class="fa-regular fa-file-lines" style="margin-right:4px;"></i>Page 2 — Reverse
-                            </div>
-                            <img id="certImg2" src="" alt="Trade Mark Certificate — Page 2 (Reverse)"
-                                 onclick="openFullscreen(2)"
-                                 title="Click to enlarge">
+                            <div class="book-page-label"><i class="fa-regular fa-file-lines" style="margin-right:4px;"></i>Page 2 — Reverse</div>
+                            <img id="certImg2" src="" alt="Page 2" onclick="openFullscreen(2)">
                         </div>
                     </div>
-
-                    <!-- Caption -->
-                    <p style="font-size:10.5px;color:#8A96A8;margin-top:12px;text-align:center;line-height:1.5;">
-                        <i class="fa-solid fa-circle-info" style="margin-right:4px;"></i>
-                        Click any page to enlarge individually, or use <strong>Fullscreen</strong> to view the complete spread.
-                        Official certificate issued by the Intellectual Property Office of Singapore.
-                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Verification seal -->
         <div style="background:#EBF7EE;border:1px solid #A8D5B5;border-radius:3px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;">
-            <i class="fa-solid fa-circle-check" style="color:#1A7A3A;font-size:22px;flex-shrink:0;margin-top:1px;"></i>
+            <i class="fa-solid fa-circle-check" style="color:#1A7A3A;font-size:22px;flex-shrink:0;"></i>
             <div>
                 <div style="font-size:13px;font-weight:700;color:#1A5C2C;margin-bottom:3px;">Verified — Singapore Trade Marks National Register</div>
-                <div style="font-size:11.5px;color:#3A7A50;line-height:1.6;">
-                    This certificate has been verified against the official register maintained by IPOS under the Trade Marks Act (Cap. 332A). The information reflects the current status on record as at the date of query.
-                </div>
+                <div style="font-size:11.5px;color:#3A7A50;line-height:1.6;">Verified under the Trade Marks Act (Cap. 332A).</div>
                 <div style="font-size:11px;color:#2A6040;margin-top:8px;font-weight:600;">
-                    <i class="fa-regular fa-clock" style="margin-right:5px;"></i>
-                    Query timestamp: <span id="queryTimestamp"></span>
+                    <i class="fa-regular fa-clock" style="margin-right:5px;"></i>Query timestamp: <span id="queryTimestamp"></span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── ERROR STATE ── -->
     <div id="errorContainer" class="hidden" style="max-width:860px;margin-left:auto;margin-right:auto;">
         <div class="portal-card">
-            <div style="background:linear-gradient(90deg,#8B1A1A,#A83232);padding:10px 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#fff;display:flex;align-items:center;gap:8px;">
-                <i class="fa-solid fa-triangle-exclamation"></i> No Record Found
-            </div>
-            <div style="padding:32px;text-align:center;">
-                <i class="fa-solid fa-database" style="font-size:32px;color:#C0CADA;margin-bottom:12px;"></i>
-                <p style="font-size:15px;font-weight:700;color:#333;margin-bottom:6px;">No matching records found</p>
-                <p style="font-size:12.5px;color:#6B7A8D;max-width:440px;margin:0 auto;">
-                    The application number does not match any record in the Singapore Trade Marks National Register. Please verify the number and try again.
-                </p>
-                <div style="margin-top:16px;background:#FFF8E7;border:1px solid #FFD97D;border-radius:3px;padding:10px 16px;display:inline-block;text-align:left;font-size:11.5px;color:#856404;">
-                    <strong>Tip:</strong> Ensure the application number includes the check digit (letter suffix). Numbers are not case-sensitive.
-                </div>
+            <div style="background:linear-gradient(90deg,#8B1A1A,#A83232);padding:10px 18px;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;"><i class="fa-solid fa-triangle-exclamation"></i> No Record Found</div>
+            <div class="p-8 text-center">
+                <p class="font-bold text-gray-800">The application number does not match any official records.</p>
             </div>
         </div>
     </div>
-
 </main>
 
-<!-- ═══════════════════════════════════
-     SINGLE-PAGE FULLSCREEN OVERLAY
-═══════════════════════════════════ -->
-<div id="fullscreenOverlay" onclick="closeFullscreen()">
-    <span id="fullscreenClose" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i></span>
-    <img id="fullscreenImg" src="" alt="Certificate Fullscreen">
-</div>
-
-<!-- ═══════════════════════════════════
-     DOUBLE-PAGE SPREAD FULLSCREEN
-═══════════════════════════════════ -->
-<div id="fullscreenSpread" onclick="closeFullscreenSpread()">
-    <span id="fullscreenSpreadClose" onclick="closeFullscreenSpread()"><i class="fa-solid fa-xmark"></i></span>
-    <img id="fsSpreadImg1" src="" alt="Certificate Page 1">
-    <img id="fsSpreadImg2" src="" alt="Certificate Page 2">
-</div>
-
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
-<footer style="background:#161616;color:#fff;border-top:1px solid #2A2A2A;margin-top:auto;" class="select-none">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:36px 48px;padding-bottom:36px;border-bottom:1px solid #2E2E2E;">
-
-            <div>
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9AAABE;margin-bottom:14px;">About IPOS</div>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">About IPOS</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Corporate Overview</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">News &amp; Media</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Events</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Careers</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">FAQs <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px;margin-left:2px;opacity:0.5;"></i></a></li>
-                </ul>
-            </div>
-
-            <div>
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9AAABE;margin-bottom:14px;">IP Services</div>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Trade Marks</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Patents</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Registered Designs</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Copyright</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">eServices</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9AAABE;margin-bottom:14px;">Resources</div>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">IP Resources Library</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Legislation</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Fees &amp; Forms</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Resolve IP Disputes</a></li>
-                    <li><a href="#" style="font-size:12.5px;color:#8E9DB5;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Data Protection Policy</a></li>
-                </ul>
-            </div>
-
-            <div style="display:flex;flex-direction:column;gap:20px;">
-                <div>
-                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9AAABE;margin-bottom:14px;">Follow IPOS</div>
-                    <div style="display:flex;gap:14px;flex-wrap:wrap;">
-                        <a href="#" style="color:#8E9DB5;font-size:16px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" style="color:#8E9DB5;font-size:16px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" style="color:#8E9DB5;font-size:16px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" style="color:#8E9DB5;font-size:16px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" style="color:#8E9DB5;font-size:16px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                    <a href="#" style="font-size:11.5px;font-weight:600;color:#8E9DB5;text-decoration:none;text-transform:uppercase;letter-spacing:0.07em;display:block;margin-top:14px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Contact Us →</a>
-                </div>
-                <div>
-                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9AAABE;margin-bottom:8px;">Made with</div>
-                    <div style="display:inline-flex;align-items:center;gap:8px;background:#1E1E1E;border:1px solid #2E2E2E;border-radius:3px;padding:6px 12px;">
-                        <svg style="height:14px;fill:#fff;display:block;" viewBox="0 0 74 18" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.15 15V3h2.36l2.84 8.27L12.15 3h2.36v12h-1.84V6.14l-2.73 7.84H8.44L5.75 6.14V15H4.15zm16.03-3.04h-4.32l-.98 3.04h-1.92l4.13-12h1.94l4.13 12h-1.96l-.98-3.04zm-.5-1.55l-1.66-5.18-1.66 5.18h3.32zm11.75 4.59c-1.12 0-2.07-.37-2.84-1.11-.77-.74-1.15-1.74-1.15-3s.38-2.27 1.15-3.01c.77-.74 1.72-1.11 2.84-1.11 1.02 0 1.86.3 2.53.9l-.97 1.34c-.45-.4-.97-.61-1.56-.61-.63 0-1.15.22-1.56.66-.41.44-.61 1.05-.61 1.83s.2 1.39.61 1.83c.41.44.93.66 1.56.66.63 0 1.18-.23 1.66-.7l.9 1.25c-.66.69-1.53 1.07-2.6.11zm11.23-1.4h-4.44V9.61h3.94V8.06h-3.94V4.55h4.44V3h-6.28v12h6.28v-1.45zm11.75-10.6c1.47 0 2.6.4 3.4 1.2.8.8 1.2 1.95 1.2 3.45s-.4 2.65-1.2 3.45c-.8.8-1.93 1.2-3.4 1.2H50.1V3h4.31zm-.15 7.75c.9 0 1.56-.24 2-.72.44-.48.66-1.2.66-2.18s-.22-1.7-.66-2.18c-.44-.48-1.1-.72-2-.72H51.9v5.8h2.37zm15.42 2.85l-2.45-5.06 2.18-3.94h-1.98l-1.7 3.19-1.7-3.19h-1.98l2.18 3.94-2.45 5.06h1.93l1.54-3.32 1.54 3.32h1.93z"/>
-                        </svg>
-                        <span style="font-size:11.5px;font-weight:700;color:#D0D7DE;letter-spacing:0.04em;">isomer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:11px;color:#5A6778;">
-            <p>&copy; 2026 Government of Singapore. Last updated 07 Jun 2026.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:flex-end;">
-                <a href="#" style="color:#5A6778;text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">Report Vulnerability <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:8px;margin-left:2px;"></i></a>
-                <a href="#" style="color:#5A6778;text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">Privacy Statement <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:8px;margin-left:2px;"></i></a>
-                <a href="#" style="color:#5A6778;text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">Terms of Use</a>
-                <a href="#" style="color:#5A6778;text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">REACH <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:8px;margin-left:2px;"></i></a>
-            </div>
-        </div>
+<footer style="background:#161616;color:#fff;margin-top:auto;" class="select-none text-xs">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-gray-400">
+        <p>&copy; 2026 Government of Singapore. Built with Isomer.</p>
     </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT
-     ▸ toggleNav()         — dropdown menu system
-     ▸ openFullscreen()    — single-page fullscreen
-     ▸ openFullscreenSpread() — both pages fullscreen
-     ▸ loadRegistryData()  — ORIGINAL, PRESERVED INTACT
-     ▸ performSearch()     — ORIGINAL, PRESERVED INTACT
-     ▸ processVerification() — ORIGINAL, PRESERVED INTACT
-═══════════════════════════════════════════════════════════ -->
+<div id="fullscreenOverlay" onclick="closeFullscreen()">
+    <span id="fullscreenClose" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i></span>
+    <img id="fullscreenImg" src="" alt="Fullscreen View">
+</div>
+
+<div id="fullscreenSpread" onclick="closeFullscreenSpread()">
+    <span id="fullscreenSpreadClose" onclick="closeFullscreenSpread()"><i class="fa-solid fa-xmark"></i></span>
+    <img id="fsSpreadImg1" src="" alt="FS Page 1">
+    <img id="fsSpreadImg2" src="" alt="FS Page 2">
+</div>
+
 <script>
-/* ════════════════════════════════════════
-   NAV DROPDOWN SYSTEM
-════════════════════════════════════════ */
-const NAV_IDS = ['ni-eservices','ni-resources','ni-fees','ni-help'];
+    let registryData = null;
 
-function toggleNav(id) {
-    const wasOpen = document.getElementById(id).classList.contains('open');
-    // close all
-    NAV_IDS.forEach(nid => document.getElementById(nid).classList.remove('open'));
-    // re-open if it was closed
-    if (!wasOpen) document.getElementById(id).classList.add('open');
-}
-
-// Close dropdowns when clicking anywhere outside nav
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('#primaryNav')) {
-        NAV_IDS.forEach(nid => document.getElementById(nid).classList.remove('open'));
+    // ── 1. LOAD REGISTRY DATA & READ URL PARAMS ──
+    async function loadRegistryData() {
+        try {
+            const response = await fetch('./data.json');
+            registryData = await response.json();
+            
+            // Auto check URL parsing query format (?reg_no=402038758675Y)
+            const urlParams = new URLSearchParams(window.location.search);
+            const regNo = urlParams.get('reg_no');
+            if (regNo) {
+                const cleanRegNo = regNo.trim().toUpperCase();
+                document.getElementById('searchQuery').value = cleanRegNo;
+                processVerification(cleanRegNo);
+            }
+        } catch (error) {
+            console.error("Database fetch initialization failed:", error);
+        }
     }
-});
 
-// Close on Escape
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        NAV_IDS.forEach(nid => document.getElementById(nid).classList.remove('open'));
-        closeFullscreen();
-        closeFullscreenSpread();
+    window.addEventListener('DOMContentLoaded', loadRegistryData);
+
+    // ── 2. TRIGGER ACTIONS FROM BUTTON ──
+    function performSearch() {
+        const query = document.getElementById('searchQuery').value.trim().toUpperCase();
+        if (!query) {
+            alert("Please enter an application number.");
+            return;
+        }
+        processVerification(query);
     }
-});
 
-/* ════════════════════════════════════════
-   SEARCH TAB SWITCHER
-════════════════════════════════════════ */
-function switchTab(btn, tabId) {
-    document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    ['tab-appno','tab-mark','tab-owner','tab-class'].forEach(id => {
-        document.getElementById(id).classList.add('hidden');
+    // ── 3. PROCESS COUPLING DATA WITH INJECTION ──
+    function processVerification(appNumber) {
+        const details = document.getElementById('detailsContainer');
+        const errorDiv = document.getElementById('errorContainer');
+        const globalLoader = document.getElementById('globalLoader');
+
+        details.classList.add('hidden');
+        errorDiv.classList.add('hidden');
+        globalLoader.classList.remove('hidden');
+
+        // Loader simulation for 600ms to look realistic
+        setTimeout(() => {
+            if (registryData && registryData[appNumber]) {
+                const record = registryData[appNumber];
+                
+                // Text Bindings
+                document.getElementById('resNum').innerText = record.id || appNumber;
+                document.getElementById('resName').innerText = record.mark || '—';
+                document.getElementById('resDate').innerText = record.filing_date || record.date || '—';
+                document.getElementById('resClass').innerText = record.class || '—';
+                document.getElementById('resOwner').innerText = record.owner || record.proprietor || '—';
+                
+                // Optional Fields Mapping from JSON
+                if(record.registration_date) document.getElementById('resRegDate').innerText = record.registration_date;
+                if(record.renewal_date) document.getElementById('resRenewDate').innerText = record.renewal_date;
+                if(record.vienna_class) document.getElementById('resVienna').innerText = record.vienna_class;
+                if(record.lodgement_type) document.getElementById('resLodgement').innerText = record.lodgement_type;
+                if(record.address) document.getElementById('resAddress').innerText = record.address;
+                if(record.agent) document.getElementById('resAgent').innerText = record.agent;
+                if(record.legal_status_date) document.getElementById('resLegalDate').innerText = record.legal_status_date;
+
+                // Document Source Setup
+                document.getElementById('certImg1').src = "./" + (record.page1 || "");
+                document.getElementById('certImg2').src = "./" + (record.page2 || "");
+
+                // Badge and system states
+                applyStatusBadge(record.status || 'Registered');
+                setTimestamp();
+
+                globalLoader.classList.add('hidden');
+                details.classList.remove('hidden');
+            } else {
+                globalLoader.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+            }
+        }, 600);
+    }
+
+    /* ── UI HELPERS ── */
+    const NAV_IDS = ['ni-eservices','ni-resources','ni-fees','ni-help'];
+    function toggleNav(id) {
+        const wasOpen = document.getElementById(id).classList.contains('open');
+        NAV_IDS.forEach(nid => document.getElementById(nid).classList.remove('open'));
+        if (!wasOpen) document.getElementById(id).classList.add('open');
+    }
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#primaryNav')) {
+            NAV_IDS.forEach(nid => document.getElementById(nid).classList.remove('open'));
+        }
     });
-    document.getElementById(tabId).classList.remove('hidden');
-}
 
-/* ════════════════════════════════════════
-   SINGLE-PAGE FULLSCREEN
-════════════════════════════════════════ */
-function openFullscreen(page) {
-    const src = page === 1
-        ? document.getElementById('certImg1').src
-        : document.getElementById('certImg2').src;
-    document.getElementById('fullscreenImg').src = src;
-    document.getElementById('fullscreenOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-function closeFullscreen() {
-    document.getElementById('fullscreenOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-}
+    function switchTab(btn, tabId) {
+        document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+    }
 
-/* ════════════════════════════════════════
-   DOUBLE-PAGE SPREAD FULLSCREEN
-════════════════════════════════════════ */
-function openFullscreenSpread() {
-    document.getElementById('fsSpreadImg1').src = document.getElementById('certImg1').src;
-    document.getElementById('fsSpreadImg2').src = document.getElementById('certImg2').src;
-    document.getElementById('fullscreenSpread').classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-function closeFullscreenSpread() {
-    document.getElementById('fullscreenSpread').classList.remove('open');
-    document.body.style.overflow = '';
-}
+    function applyStatusBadge(status) {
+        const badge = document.getElementById('resBadge');
+        const text  = document.getElementById('resStatusText');
+        badge.className = 'badge';
+        const s = status.toLowerCase();
+        if (s.includes('register')) badge.classList.add('badge-registered');
+        else if (s.includes('pend')) badge.classList.add('badge-pending');
+        else if (s.includes('refus')) badge.classList.add('badge-refused');
+        else badge.classList.add('badge-expired');
+        text.textContent = status;
+    }
 
-/* ════════════════════════════════════════
-   STATUS BADGE
-════════════════════════════════════════ */
-function applyStatusBadge(status) {
-    const badge = document.getElementById('resBadge');
-    const text  = document.getElementById('resStatusText');
-    badge.className = 'badge';
-    const s = (status || '').toLowerCase();
-    if      (s.includes('register'))                   badge.classList.add('badge-registered');
-    else if (s.includes('pend'))                       badge.classList.add('badge-pending');
-    else if (s.includes('refus') || s.includes('oppos')) badge.classList.add('badge-refused');
-    else                                               badge.classList.add('badge-expired');
-    text.textContent = status || 'Unknown';
-}
+    function setTimestamp() {
+        const now  = new Date();
+        const opts = { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZoneName:'short' };
+        document.getElementById('queryTimestamp').textContent = now.toLocaleString('en-SG', opts);
+    }
 
-/* ════════════════════════════════════════
-   TIMESTAMP
-════════════════════════════════════════ */
-function setTimestamp() {
-    const now  = new Date();
-    const opts = { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZoneName:'short' };
-    document.getElementById('queryTimestamp').textContent = now.toLocaleString('en-SG', opts);
-}
+    function openFullscreen(page) {
+        const src = page === 1 ? document.getElementById('certImg1').src : document.getElementById('certImg2').src;
+        document.getElementById('fullscreenImg').src = src;
+        document.getElementById('fullscreenOverlay').classList.add('open');
+    }
+    function closeFullscreen() { document.getElementById('fullscreenOverlay').classList.remove('open'); }
 
-/* ═══════�
+    function openFullscreenSpread() {
+        document.getElementById('fsSpreadImg1').src = document.getElementById('certImg1').src;
+        document.getElementById('fsSpreadImg2').src = document.getElementById('certImg2').src;
+        document.getElementById('fullscreenSpread').classList.add('open');
+    }
+    function closeFullscreenSpread() { document.getElementById('fullscreenSpread').classList.remove('open'); }
+</script>
+
+</body>
+</html>

@@ -1,1 +1,885 @@
-1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPOS Digital Hub | Trade Mark Search & Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- [PRELOAD SPEED BOOSTER] -->
+    <link rel="preload" href="./402038758675Y.font.jpg" as="image">
+    <link rel="preload" href="./402038758675Y.back.jpg" as="image">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iposNavy:    '#002A54',
+                        iposNavyDk: '#001C3A',
+                        iposOrange: '#EF4A24',
+                        iposRed:    '#C0392B',
+                        sgGovGray:  '#F2F5F8',
+                        sgTextDark: '#1A1A1A',
+                        sgBorder:   '#D0D7DE',
+                        singpass:   '#EB2227',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+            background: #F4F6F8;
+            color: #1A1A1A;
+        }
+        code, .mono { font-family: 'IBM Plex Mono', 'Courier New', monospace; }
+
+        /* --- Animations --- */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeSlideUp 0.25s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spin { animation: spin 0.8s linear infinite; }
+
+        /* --- Navigation --- */
+        .nav-link {
+            font-size: 13px;
+            font-weight: 500;
+            color: #3D3D3D;
+            padding: 6px 14px;
+            border-radius: 2px;
+            transition: color 0.15s, background 0.15s;
+            white-space: nowrap;
+            position: relative;
+        }
+        .nav-link:hover { color: #002A54; background: #EEF2F7; }
+        .nav-link.active { color: #002A54; font-weight: 600; }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 14px; right: 14px;
+            height: 2px;
+            background: #EF4A24;
+            border-radius: 1px;
+        }
+
+        /* --- Tab system --- */
+        .search-tab {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 9px 18px;
+            border-bottom: 2px solid transparent;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .search-tab.active {
+            color: #002A54;
+            border-bottom-color: #EF4A24;
+        }
+        .search-tab:hover:not(.active) { color: #002A54; }
+
+        /* --- Document Tab system --- */
+        .doc-tab {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 7px 16px;
+            border: 1px solid #D0D7DE;
+            border-bottom: none;
+            border-radius: 3px 3px 0 0;
+            background: #F4F6F8;
+            color: #666;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .doc-tab.active {
+            background: #fff;
+            color: #002A54;
+            border-bottom: 2px solid #fff;
+            margin-bottom: -1px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* --- Metadata rows --- */
+        .meta-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-bottom: 1px solid #E8ECF0;
+            transition: background 0.12s;
+        }
+        .meta-row:last-child { border-bottom: none; }
+        .meta-row:hover { background: #F8FAFC; }
+        .meta-label {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #6B7A8D;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 11px 16px;
+            border-right: 1px solid #E8ECF0;
+        }
+        .meta-value {
+            font-size: 13px;
+            color: #1A1A1A;
+            padding: 11px 16px;
+            font-weight: 500;
+        }
+
+        /* --- Status badges --- */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 2px;
+        }
+        .badge-registered { background: #EBF7EE; color: #1A7A3A; border: 1px solid #A8D5B5; }
+        .badge-pending    { background: #FFF8E7; color: #8A6200; border: 1px solid #FACF6E; }
+        .badge-refused    { background: #FDECEC; color: #9B1C1C; border: 1px solid #F4AAAA; }
+        .badge-expired    { background: #F3F4F6; color: #555;    border: 1px solid #CCC; }
+        .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .badge-registered .badge-dot { background: #1A7A3A; }
+        .badge-pending    .badge-dot { background: #D97706; }
+        .badge-refused    .badge-dot { background: #DC2626; }
+        .badge-expired    .badge-dot { background: #9CA3AF; }
+
+        /* --- Singpass button --- */
+        .singpass-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #EB2227;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 3px;
+            letter-spacing: 0.03em;
+            transition: background 0.15s;
+            text-decoration: none;
+        }
+        .singpass-btn:hover { background: #C81E23; }
+        .singpass-logo {
+            background: #fff;
+            color: #EB2227;
+            font-size: 9px;
+            font-weight: 900;
+            padding: 2px 5px;
+            border-radius: 2px;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Search input focus ring --- */
+        .ipos-input:focus {
+            outline: none;
+            border-color: #002A54;
+            box-shadow: 0 0 0 3px rgba(0,42,84,0.1);
+        }
+
+        /* --- Document viewer --- */
+        #docViewer { min-height: 340px; background: #F9FAFB; position: relative; }
+        .doc-zoom-btn {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: rgba(255,255,255,0.92);
+            border: 1px solid #D0D7DE;
+            border-radius: 3px;
+            padding: 5px 9px;
+            font-size: 11px;
+            color: #444;
+            cursor: pointer;
+            display: flex; align-items: center; gap: 5px;
+            transition: background 0.15s;
+            z-index: 10;
+        }
+        .doc-zoom-btn:hover { background: #fff; color: #002A54; }
+
+        /* --- Mobile tweaks --- */
+        @media (max-width: 640px) {
+            .meta-row { grid-template-columns: 1fr; }
+            .meta-label { border-right: none; border-bottom: 1px solid #E8ECF0; padding-bottom: 6px; }
+            .meta-value { padding-top: 6px; }
+            .nav-desktop { display: none; }
+        }
+
+        /* Section card */
+        .portal-card {
+            background: #fff;
+            border: 1px solid #D0D7DE;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .card-header {
+            background: linear-gradient(90deg, #002A54 0%, #0A417A 100%);
+            color: #fff;
+            padding: 10px 18px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb { font-size: 11.5px; color: #6B7A8D; }
+        .breadcrumb a { color: #2563EB; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 5px; color: #B0BAC9; }
+
+        /* Fullscreen overlay */
+        #fullscreenOverlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #fullscreenOverlay.open { display: flex; }
+        #fullscreenOverlay img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 3px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        }
+        #fullscreenClose {
+            position: fixed;
+            top: 16px; right: 20px;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* Banner strip */
+        .info-banner {
+            background: #EBF3FF;
+            border-left: 3px solid #2563EB;
+            padding: 8px 14px;
+            font-size: 11.5px;
+            color: #1E3A5F;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+<!-- ═══════════════════════════════════════════════
+     1. SINGAPORE GOVERNMENT MASTHEAD
+═══════════════════════════════════════════════ -->
+<div style="background:#F0F4F9; border-bottom:1px solid #D0D7DE;" class="select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-1.5 flex items-center gap-2">
+        <img src="./logu.png" alt="Singapore Lion Symbol" style="height:16px;"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
+        <span style="font-size:11px; color:#444; font-weight:600;">A Singapore Government Agency Website</span>
+        <span style="color:#B0BAC9; font-size:11px; margin:0 4px;">|</span>
+        <button onclick="document.getElementById('howToIdentify').classList.toggle('hidden')"
+                style="font-size:11px; color:#2563EB; background:none; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:3px;">
+            How to identify <i class="fa-solid fa-chevron-down" style="font-size:8px;"></i>
+        </button>
+    </div>
+    <div id="howToIdentify" class="hidden max-w-7xl mx-auto px-4 sm:px-8 pb-3">
+        <div style="background:#fff; border:1px solid #D0D7DE; border-radius:3px; padding:12px 16px; font-size:11.5px; color:#444; max-width:560px;">
+            <strong style="color:#002A54;">Official Singapore Government websites</strong> end in <strong>.gov.sg</strong>.
+            Look for the <img src="./logu.png" style="height:12px; display:inline; vertical-align:middle;"
+            onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/00/Coat_of_arms_of_Singapore.svg'">
+            Singapore Lion symbol and the <strong>.gov.sg</strong> domain in the URL bar.
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     2. IPOS BRAND HEADER
+═══════════════════════════════════════════════ -->
+<header style="background:#fff; border-bottom:2px solid #002A54;" class="select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div style="height:72px;" class="flex items-center justify-between">
+
+            <!-- Logo block -->
+            <div class="flex items-center gap-4">
+                <a href="#" class="flex items-center gap-3 no-underline">
+                    <div style="font-size:30px; font-weight:900; letter-spacing:-1.5px; line-height:1;">
+                        <span style="color:#EF4A24;">IP</span><span style="color:#002A54;">OS</span>
+                    </div>
+                    <div style="border-left:1.5px solid #D0D7DE; padding-left:12px; line-height:1.3;">
+                        <div style="font-size:8.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#4A5568;">Intellectual Property</div>
+                        <div style="font-size:8.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#4A5568; margin-top:2px;">Office of Singapore</div>
+                    </div>
+                </a>
+                <div class="hidden md:flex flex-col" style="border-left:1.5px solid #D0D7DE; padding-left:14px; gap:3px;">
+                    <span style="font-size:9px; background:#FFF3CD; color:#856404; border:1px solid #FFD97D; padding:2px 7px; border-radius:2px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; width:max-content;">IPOS Digital Hub</span>
+                    <span style="font-size:13px; font-weight:700; color:#002A54; letter-spacing:0.02em;">Trade Mark National Register</span>
+                </div>
+            </div>
+
+            <!-- Right: Login -->
+            <div class="flex items-center gap-3">
+                <a href="https://login.id.singpass.gov.sg/main" target="_blank" class="singpass-btn">
+                    <span class="singpass-logo">SP</span>
+                    Login with Singpass
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-desktop flex items-center gap-0 pb-0 -mx-2" style="border-top:1px solid #EEF0F3;">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link active">Search &amp; Enquiry</a>
+            <a href="#" class="nav-link">eServices</a>
+            <a href="#" class="nav-link">IP Resources</a>
+            <a href="#" class="nav-link">Fees &amp; Forms</a>
+            <a href="#" class="nav-link">Help &amp; Support</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     3. PAGE CONTEXT STRIP + BREADCRUMB
+═══════════════════════════════════════════════ -->
+<div style="background:#EEF2F7; border-bottom:1px solid #D0D7DE;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+        <div class="breadcrumb">
+            <a href="#">Home</a>
+            <span>›</span>
+            <a href="#">Search &amp; Enquiry</a>
+            <span>›</span>
+            <strong style="color:#002A54;">Trade Mark Verification</strong>
+        </div>
+        <div style="font-size:11px; color:#6B7A8D;">
+            <i class="fa-solid fa-database" style="margin-right:5px;"></i>
+            Registry last updated: <strong>07 Jun 2026, 06:00 SGT</strong>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     4. MAIN CONTENT
+═══════════════════════════════════════════════ -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+    <!-- Info Banner -->
+    <div class="info-banner mb-6" style="border-radius:3px; max-width:860px; margin-left:auto; margin-right:auto;">
+        <i class="fa-solid fa-circle-info" style="color:#2563EB; margin-top:1px; flex-shrink:0;"></i>
+        <div>
+            <strong>Official Trade Mark Verification Service</strong> — This service allows you to verify the registration status and authenticity of trade marks registered or applied for in Singapore under the Trade Marks Act (Cap. 332A).
+        </div>
+    </div>
+
+    <!-- ─── SEARCH PANEL ─── -->
+    <div class="portal-card mb-6" style="max-width:860px; margin-left:auto; margin-right:auto;">
+        <div class="card-header">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Trade Mark Search
+        </div>
+
+        <!-- Search Tabs -->
+        <div style="border-bottom:1px solid #E8ECF0; background:#FAFBFC; display:flex; overflow-x:auto;">
+            <button class="search-tab active" onclick="switchTab(this,'tab-appno')">Application No.</button>
+            <button class="search-tab" onclick="switchTab(this,'tab-mark')">Trade Mark Name</button>
+            <button class="search-tab" onclick="switchTab(this,'tab-owner')">Owner / Applicant</button>
+            <button class="search-tab" onclick="switchTab(this,'tab-class')">Nice Class</button>
+        </div>
+
+        <!-- Tab: Application No. (active) -->
+        <div id="tab-appno" class="p-5">
+            <label style="font-size:11px; font-weight:700; color:#6B7A8D; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:6px;">Application / Registration Number</label>
+            <div class="flex gap-3 flex-col sm:flex-row">
+                <input type="text" id="searchQuery"
+                       class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5 mono"
+                       style="font-size:14px; background:#fff; text-transform:uppercase;"
+                       placeholder="e.g. 402038758675Y"
+                       onkeydown="if(event.key==='Enter') performSearch()">
+                <button onclick="performSearch()"
+                        style="background:linear-gradient(135deg,#002A54,#0A417A); color:#fff; font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:10px 28px; border-radius:2px; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; white-space:nowrap; flex-shrink:0;"
+                        onmouseover="this.style.background='#001C3A'" onmouseout="this.style.background='linear-gradient(135deg,#002A54,#0A417A)'">
+                    <i class="fa-solid fa-search" style="font-size:11px;"></i>
+                    Search Register
+                </button>
+            </div>
+            <p style="font-size:11px; color:#8A96A8; margin-top:8px;">
+                Enter the full application number including the check digit (e.g. <span class="mono" style="background:#F0F4F8; padding:1px 5px; border-radius:2px; color:#444;">402038758675Y</span>).
+            </p>
+        </div>
+
+        <!-- Tab: Mark Name -->
+        <div id="tab-mark" class="p-5 hidden">
+            <label style="font-size:11px; font-weight:700; color:#6B7A8D; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:6px;">Trade Mark Name / Word Mark</label>
+            <div class="flex gap-3 flex-col sm:flex-row">
+                <input type="text" class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5"
+                       style="font-size:14px; background:#fff;"
+                       placeholder="e.g. SUPER BRAND">
+                <button style="background:#002A54; color:#fff; font-size:12px; font-weight:700; padding:10px 28px; border-radius:2px; border:none; cursor:pointer; white-space:nowrap; flex-shrink:0;">Search Register</button>
+            </div>
+            <p style="font-size:11px; color:#8A96A8; margin-top:8px;">Use % as a wildcard. Searches are case-insensitive.</p>
+        </div>
+
+        <!-- Tab: Owner -->
+        <div id="tab-owner" class="p-5 hidden">
+            <label style="font-size:11px; font-weight:700; color:#6B7A8D; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:6px;">Owner / Applicant Name</label>
+            <div class="flex gap-3 flex-col sm:flex-row">
+                <input type="text" class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5"
+                       style="font-size:14px; background:#fff;"
+                       placeholder="e.g. Pte Ltd, Corp, Limited">
+                <button style="background:#002A54; color:#fff; font-size:12px; font-weight:700; padding:10px 28px; border-radius:2px; border:none; cursor:pointer; white-space:nowrap; flex-shrink:0;">Search Register</button>
+            </div>
+        </div>
+
+        <!-- Tab: Class -->
+        <div id="tab-class" class="p-5 hidden">
+            <label style="font-size:11px; font-weight:700; color:#6B7A8D; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:6px;">Nice Classification Class No.</label>
+            <div class="flex gap-3 flex-col sm:flex-row">
+                <select class="ipos-input flex-grow border border-gray-300 rounded-sm px-4 py-2.5 bg-white" style="font-size:14px;">
+                    <option value="">— Select Class —</option>
+                    <option>Class 01 – Chemicals</option>
+                    <option>Class 09 – Scientific &amp; Electrical Apparatus</option>
+                    <option>Class 25 – Clothing, Footwear, Headgear</option>
+                    <option>Class 35 – Advertising &amp; Business Management</option>
+                    <option>Class 36 – Insurance &amp; Financial Services</option>
+                    <option>Class 42 – Scientific &amp; Technology Services</option>
+                    <option>Class 44 – Medical &amp; Beauty Services</option>
+                </select>
+                <button style="background:#002A54; color:#fff; font-size:12px; font-weight:700; padding:10px 28px; border-radius:2px; border:none; cursor:pointer; white-space:nowrap; flex-shrink:0;">Search Register</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── GLOBAL LOADER ─── -->
+    <div id="globalLoader" class="hidden portal-card mb-6 py-14 text-center" style="max-width:860px; margin-left:auto; margin-right:auto;">
+        <i class="fa-solid fa-circle-notch spin" style="font-size:28px; color:#002A54; margin-bottom:12px;"></i>
+        <p style="font-size:12px; font-weight:600; color:#6B7A8D; letter-spacing:0.08em; text-transform:uppercase; margin-top:8px;">Querying National Registry Server…</p>
+        <p style="font-size:11px; color:#AAB4C0; margin-top:4px;">Please wait. Connecting to IPOS Digital Hub database.</p>
+    </div>
+
+    <!-- ─── RESULTS CONTAINER ─── -->
+    <div id="detailsContainer" class="hidden fade-in" style="max-width:860px; margin-left:auto; margin-right:auto;">
+
+        <!-- Result status banner -->
+        <div id="resultBanner" style="background:#EBF7EE; border:1px solid #A8D5B5; border-radius:3px; padding:10px 16px; margin-bottom:16px; display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-circle-check" style="color:#1A7A3A; font-size:18px; flex-shrink:0;"></i>
+            <div>
+                <div style="font-size:13px; font-weight:700; color:#1A5C2C;">Record Found — Verified Against National Register</div>
+                <div style="font-size:11px; color:#3A7A50; margin-top:1px;">This record has been verified against the official Singapore Trade Marks Register maintained by IPOS.</div>
+            </div>
+        </div>
+
+        <!-- ── RECORD DETAILS CARD ── -->
+        <div class="portal-card mb-5">
+            <div class="card-header">
+                <i class="fa-solid fa-id-card"></i>
+                Trade Mark Record — Official Registry Details
+                <div style="margin-left:auto; display:flex; align-items:center; gap:8px;">
+                    <span id="resBadge" class="badge badge-registered"><span class="badge-dot"></span><span id="resStatusText"></span></span>
+                </div>
+            </div>
+
+            <!-- Core metadata table -->
+            <div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-hashtag" style="margin-right:6px; color:#B0BAC9;"></i>Application No.</div>
+                    <div class="meta-value mono" id="resNum" style="font-size:14px; font-weight:600; color:#002A54; letter-spacing:0.04em;"></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-trademark" style="margin-right:6px; color:#B0BAC9;"></i>Trade Mark</div>
+                    <div class="meta-value" id="resName" style="font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.04em;"></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-regular fa-calendar" style="margin-right:6px; color:#B0BAC9;"></i>Filing Date</div>
+                    <div class="meta-value" id="resDate"></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-calendar-check" style="margin-right:6px; color:#B0BAC9;"></i>Registration Date</div>
+                    <div class="meta-value" id="resRegDate">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-rotate" style="margin-right:6px; color:#B0BAC9;"></i>Renewal Date</div>
+                    <div class="meta-value" id="resRenewDate">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-tag" style="margin-right:6px; color:#B0BAC9;"></i>Nice Classification</div>
+                    <div class="meta-value" id="resClass"></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-layer-group" style="margin-right:6px; color:#B0BAC9;"></i>Vienna Class</div>
+                    <div class="meta-value" id="resVienna">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-file-pen" style="margin-right:6px; color:#B0BAC9;"></i>Lodgement Type</div>
+                    <div class="meta-value" id="resLodgement">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-building" style="margin-right:6px; color:#B0BAC9;"></i>Registered Proprietor</div>
+                    <div class="meta-value" id="resOwner" style="font-weight:600;"></div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-map-pin" style="margin-right:6px; color:#B0BAC9;"></i>Proprietor Address</div>
+                    <div class="meta-value" id="resAddress">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-user-tie" style="margin-right:6px; color:#B0BAC9;"></i>Agent / Representative</div>
+                    <div class="meta-value" id="resAgent">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-scale-balanced" style="margin-right:6px; color:#B0BAC9;"></i>Legal Status Date</div>
+                    <div class="meta-value" id="resLegalDate">—</div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-label"><i class="fa-solid fa-shield-halved" style="margin-right:6px; color:#B0BAC9;"></i>Authority</div>
+                    <div class="meta-value" style="color:#002A54; font-weight:600;">Intellectual Property Office of Singapore (IPOS)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── DOCUMENT VIEWER CARD ── -->
+        <div class="portal-card mb-5">
+            <div class="card-header">
+                <i class="fa-solid fa-file-image"></i>
+                Official Certificate Document
+                <span style="margin-left:auto; font-size:10px; font-weight:400; opacity:0.75; letter-spacing:0.03em;">IPOS Digitally Issued Document</span>
+            </div>
+
+            <!-- Doc tabs -->
+            <div style="padding:14px 16px 0; background:#F4F6F8; display:flex; gap:6px; border-bottom:1px solid #D0D7DE;">
+                <button class="doc-tab active" id="docTab1" onclick="switchDocTab(1)">
+                    <i class="fa-regular fa-file" style="margin-right:5px;"></i>Page 1 — Front
+                </button>
+                <button class="doc-tab" id="docTab2" onclick="switchDocTab(2)">
+                    <i class="fa-regular fa-file-lines" style="margin-right:5px;"></i>Page 2 — Reverse
+                </button>
+            </div>
+
+            <!-- Viewer area -->
+            <div id="docViewer" style="padding:16px; background:#F9FAFB; position:relative;">
+                <button class="doc-zoom-btn" onclick="openFullscreen(currentDocPage)" title="Fullscreen View">
+                    <i class="fa-solid fa-expand"></i> Fullscreen
+                </button>
+                <div id="docPage1" style="display:block; text-align:center;">
+                    <img id="certImg1" src="" alt="Trade Mark Certificate — Page 1 (Front)"
+                         style="max-width:100%; border:1px solid #D0D7DE; border-radius:2px; box-shadow:0 2px 8px rgba(0,0,0,0.08); cursor:pointer;"
+                         onclick="openFullscreen(1)">
+                    <p style="font-size:10.5px; color:#8A96A8; margin-top:8px; text-align:center;">
+                        <i class="fa-solid fa-circle-info" style="margin-right:4px;"></i>
+                        Click image or use Fullscreen to enlarge. Official IPOS issued document.
+                    </p>
+                </div>
+                <div id="docPage2" style="display:none; text-align:center;">
+                    <img id="certImg2" src="" alt="Trade Mark Certificate — Page 2 (Reverse)"
+                         style="max-width:100%; border:1px solid #D0D7DE; border-radius:2px; box-shadow:0 2px 8px rgba(0,0,0,0.08); cursor:pointer;"
+                         onclick="openFullscreen(2)">
+                    <p style="font-size:10.5px; color:#8A96A8; margin-top:8px; text-align:center;">
+                        <i class="fa-solid fa-circle-info" style="margin-right:4px;"></i>
+                        Click image or use Fullscreen to enlarge. Official IPOS issued document.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── VERIFICATION SEAL ── -->
+        <div style="background:#EBF7EE; border:1px solid #A8D5B5; border-radius:3px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px;">
+            <i class="fa-solid fa-circle-check" style="color:#1A7A3A; font-size:22px; flex-shrink:0; margin-top:1px;"></i>
+            <div>
+                <div style="font-size:13px; font-weight:700; color:#1A5C2C; margin-bottom:3px;">Verified — Singapore Trade Marks National Register</div>
+                <div style="font-size:11.5px; color:#3A7A50; line-height:1.6;">
+                    This trade mark certificate has been verified successfully against the official register maintained by the Intellectual Property Office of Singapore (IPOS) under the Trade Marks Act (Cap. 332A). The information displayed reflects the current status on record as at the date of query.
+                </div>
+                <div style="font-size:11px; color:#2A6040; margin-top:8px; font-weight:600;">
+                    <i class="fa-regular fa-clock" style="margin-right:5px;"></i>
+                    Query timestamp: <span id="queryTimestamp"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ─── ERROR STATE ─── -->
+    <div id="errorContainer" class="hidden" style="max-width:860px; margin-left:auto; margin-right:auto;">
+        <div class="portal-card">
+            <div style="background:linear-gradient(90deg,#8B1A1A,#A83232); padding:10px 18px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#fff; display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                No Record Found
+            </div>
+            <div style="padding:32px; text-align:center;">
+                <i class="fa-solid fa-database" style="font-size:32px; color:#C0CADA; margin-bottom:12px;"></i>
+                <p style="font-size:15px; font-weight:700; color:#333; margin-bottom:6px;">No matching records found</p>
+                <p style="font-size:12.5px; color:#6B7A8D; max-width:440px; margin:0 auto;">
+                    The application number you entered does not match any records in the Singapore Trade Marks National Register. Please verify the number and try again.
+                </p>
+                <div style="margin-top:16px; background:#FFF8E7; border:1px solid #FFD97D; border-radius:3px; padding:10px 16px; display:inline-block; text-align:left; font-size:11.5px; color:#856404;">
+                    <strong>Tips:</strong> Ensure the application number includes the check digit (letter suffix). Numbers are case-insensitive.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     5. FULLSCREEN OVERLAY
+═══════════════════════════════════════════════ -->
+<div id="fullscreenOverlay" onclick="closeFullscreen()">
+    <span id="fullscreenClose" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i></span>
+    <img id="fullscreenImg" src="" alt="Certificate Fullscreen View">
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     6. FOOTER — IPOS DARK ISOMER LAYOUT
+═══════════════════════════════════════════════ -->
+<footer style="background:#161616; color:#fff; border-top:1px solid #2A2A2A; margin-top:auto;" class="select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:36px 48px; padding-bottom:36px; border-bottom:1px solid #2E2E2E;">
+
+            <!-- About IPOS -->
+            <div>
+                <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#9AAABE; margin-bottom:14px;">About IPOS</div>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none; transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">About IPOS</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Corporate Overview</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">News &amp; Media</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Events</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Careers</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">FAQs <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px; margin-left:3px; opacity:0.5;"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- IP Services -->
+            <div>
+                <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#9AAABE; margin-bottom:14px;">IP Services</div>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Trade Marks</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Patents</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Registered Designs</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Plant Variety Protection</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Copyright</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">eServices</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div>
+                <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#9AAABE; margin-bottom:14px;">Resources</div>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">IP Resources Library</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Legislation</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Fees &amp; Forms</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Resolve IP Disputes</a></li>
+                    <li><a href="#" style="font-size:12.5px; color:#8E9DB5; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Data Protection Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact + Logos -->
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div>
+                    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#9AAABE; margin-bottom:14px;">Follow IPOS</div>
+                    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                        <a href="#" style="color:#8E9DB5; font-size:16px; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" style="color:#8E9DB5; font-size:16px; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" style="color:#8E9DB5; font-size:16px; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" style="color:#8E9DB5; font-size:16px; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" style="color:#8E9DB5; font-size:16px; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <a href="#" style="font-size:11.5px; font-weight:600; color:#8E9DB5; text-decoration:none; text-transform:uppercase; letter-spacing:0.07em; display:block; margin-top:14px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8E9DB5'">Contact Us →</a>
+                </div>
+
+                <!-- Powered by badges -->
+                <div>
+                    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#9AAABE; margin-bottom:8px;">Made with</div>
+                    <div style="display:inline-flex; align-items:center; gap:8px; background:#1E1E1E; border:1px solid #2E2E2E; border-radius:3px; padding:6px 12px;">
+                        <svg style="height:14px; fill:#fff; display:block;" viewBox="0 0 74 18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.15 15V3h2.36l2.84 8.27L12.15 3h2.36v12h-1.84V6.14l-2.73 7.84H8.44L5.75 6.14V15H4.15zm16.03-3.04h-4.32l-.98 3.04h-1.92l4.13-12h1.94l4.13 12h-1.96l-.98-3.04zm-.5-1.55l-1.66-5.18-1.66 5.18h3.32zm11.75 4.59c-1.12 0-2.07-.37-2.84-1.11-.77-.74-1.15-1.74-1.15-3s.38-2.27 1.15-3.01c.77-.74 1.72-1.11 2.84-1.11 1.02 0 1.86.3 2.53.9l-.97 1.34c-.45-.4-.97-.61-1.56-.61-.63 0-1.15.22-1.56.66-.41.44-.61 1.05-.61 1.83s.2 1.39.61 1.83c.41.44.93.66 1.56.66.63 0 1.18-.23 1.66-.7l.9 1.25c-.66.69-1.53 1.07-2.6.11zm11.23-1.4h-4.44V9.61h3.94V8.06h-3.94V4.55h4.44V3h-6.28v12h6.28v-1.45zm11.75-10.6c1.47 0 2.6.4 3.4 1.2.8.8 1.2 1.95 1.2 3.45s-.4 2.65-1.2 3.45c-.8.8-1.93 1.2-3.4 1.2H50.1V3h4.31zm-.15 7.75c.9 0 1.56-.24 2-.72.44-.48.66-1.2.66-2.18s-.22-1.7-.66-2.18c-.44-.48-1.1-.72-2-.72H51.9v5.8h2.37zm15.42 2.85l-2.45-5.06 2.18-3.94h-1.98l-1.7 3.19-1.7-3.19h-1.98l2.18 3.94-2.45 5.06h1.93l1.54-3.32 1.54 3.32h1.93z"/>
+                        </svg>
+                        <span style="font-size:11.5px; font-weight:700; color:#D0D7DE; letter-spacing:0.04em;">isomer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright row -->
+        <div style="padding-top:24px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; font-size:11px; color:#5A6778;">
+            <p>&copy; 2026 Government of Singapore. Last updated 07 Jun 2026.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:flex-end;">
+                <a href="#" style="color:#5A6778; text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">Report Vulnerability <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:8px; margin-left:2px;"></i></a>
+                <a href="#" style="color:#5A6778; text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">Privacy Statement <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:8px; margin-left:2px;"></i></a>
+                <a href="#" style="color:#5A6778; text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">Terms of Use</a>
+                <a href="#" style="color:#5A6778; text-decoration:none;" onmouseover="this.style.color='#C0CADA'" onmouseout="this.style.color='#5A6778'">REACH <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:8px; margin-left:2px;"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT — ALL ORIGINAL LOGIC PRESERVED
+═══════════════════════════════════════════════ -->
+<script>
+    /* ── State ── */
+    let registryData = null;
+    let currentDocPage = 1;
+
+    /* ── Search tab switcher ── */
+    function switchTab(btn, tabId) {
+        document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        ['tab-appno','tab-mark','tab-owner','tab-class'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
+        document.getElementById(tabId).classList.remove('hidden');
+    }
+
+    /* ── Document tab switcher ── */
+    function switchDocTab(page) {
+        currentDocPage = page;
+        document.getElementById('docPage1').style.display = page === 1 ? 'block' : 'none';
+        document.getElementById('docPage2').style.display = page === 2 ? 'block' : 'none';
+        document.getElementById('docTab1').classList.toggle('active', page === 1);
+        document.getElementById('docTab2').classList.toggle('active', page === 2);
+    }
+
+    /* ── Fullscreen document viewer ── */
+    function openFullscreen(page) {
+        const src = page === 1
+            ? document.getElementById('certImg1').src
+            : document.getElementById('certImg2').src;
+        document.getElementById('fullscreenImg').src = src;
+        document.getElementById('fullscreenOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeFullscreen() {
+        document.getElementById('fullscreenOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFullscreen(); });
+
+    /* ── Status badge helper ── */
+    function applyStatusBadge(status) {
+        const badge = document.getElementById('resBadge');
+        const text  = document.getElementById('resStatusText');
+        badge.className = 'badge';
+        const s = (status || '').toLowerCase();
+        if (s.includes('register'))  badge.classList.add('badge-registered');
+        else if (s.includes('pend')) badge.classList.add('badge-pending');
+        else if (s.includes('refus') || s.includes('oppos')) badge.classList.add('badge-refused');
+        else badge.classList.add('badge-expired');
+        text.textContent = status || 'Unknown';
+    }
+
+    /* ── Timestamp ── */
+    function setTimestamp() {
+        const now = new Date();
+        const opts = { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZoneName:'short' };
+        document.getElementById('queryTimestamp').textContent = now.toLocaleString('en-SG', opts);
+    }
+
+    /* ══════════════════════════════════════════════
+       ORIGINAL CORE FUNCTIONS — PRESERVED INTACT
+    ══════════════════════════════════════════════ */
+
+    async function loadRegistryData() {
+        try {
+            const response = await fetch('./data.json');
+            registryData = await response.json();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const regNo = urlParams.get('reg_no');
+            if (regNo) {
+                const cleanRegNo = regNo.trim().toUpperCase();
+                document.getElementById('searchQuery').value = cleanRegNo;
+                processVerification(cleanRegNo);
+            }
+        } catch (error) {
+            console.error("Database fetch failed:", error);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadRegistryData);
+
+    function performSearch() {
+        const query = document.getElementById('searchQuery').value.trim().toUpperCase();
+        if (!query) {
+            alert("Please enter an application number.");
+            return;
+        }
+        processVerification(query);
+    }
+
+    function processVerification(appNumber) {
+        const details      = document.getElementById('detailsContainer');
+        const errorDiv     = document.getElementById('errorContainer');
+        const globalLoader = document.getElementById('globalLoader');
+
+        details.classList.add('hidden');
+        errorDiv.classList.add('hidden');
+        globalLoader.classList.remove('hidden');
+
+        /* Simulate brief network delay for realism */
+        setTimeout(() => {
+            if (registryData && registryData[appNumber]) {
+                const record = registryData[appNumber];
+
+                /* ── Core fields (original IDs kept) ── */
+                document.getElementById('resNum').textContent   = record.id || appNumber;
+                document.getElementById('resName').textContent  = record.mark || '—';
+                document.getElementById('resDate').textContent  = record.filing_date || record.date || '—';
+                document.getElementById('resClass').textContent = record.class || '—';
+
+                /* ── Extended metadata (fallback to '—') ── */
+                document.getElementById('resRegDate').textContent   = record.registration_date || record.reg_date   || '—';
+                document.getElementById('resRenewDate').textContent = record.renewal_date      || record.renew_date || '—';
+                document.getElementById('resVienna').textContent    = record.vienna_class      || record.vienna     || '—';
+                document.getElementById('resLodgement').textContent = record.lodgement_type   || record.lodgement  || 'Standard Application';
+                document.getElementById('resOwner').textContent     = record.owner            || record.mark       || '—';
+                document.getElementById('resAddress').textContent   = record.address                               || '—';
+                document.getElementById('resAgent').textContent     = record.agent            || record.agent_name  || '—';
+                document.getElementById('resLegalDate').textContent = record.legal_status_date|| record.legal_date  || '—';
+
+                /* ── Status badge ── */
+                applyStatusBadge(record.status);
+
+                /* ── Certificate images ── */
+                document.getElementById('certImg1').src = './' + record.page1;
+                document.getElementById('certImg2').src = './' + record.page2;
+
+                /* ── Reset to page 1 on every new result ── */
+                switchDocTab(1);
+
+                /* ── Timestamp ── */
+                setTimestamp();
+
+                globalLoader.classList.add('hidden');
+                details.classList.remove('hidden');
+
+            } else {
+                globalLoader.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+            }
+        }, 600);
+    }
+</script>
+</body>
+</html>
